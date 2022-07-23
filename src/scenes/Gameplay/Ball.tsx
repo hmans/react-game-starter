@@ -10,7 +10,7 @@ const Ball = () => {
     <group>
       <Animate update={rotate}>
         <mesh>
-          <dodecahedronGeometry args={[0.5]} />
+          <dodecahedronGeometry args={[0.4]} />
           <meshStandardMaterial color="white" metalness={0.2} roughness={0.1} />
         </mesh>
       </Animate>

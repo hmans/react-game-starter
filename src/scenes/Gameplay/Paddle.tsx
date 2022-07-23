@@ -6,7 +6,7 @@ const Paddle = ({ color, ...props }: PaddleProps) => {
   return (
     <group {...props}>
       <mesh>
-        <boxGeometry args={[0.3, 1.2, 0.3]} />
+        <boxGeometry args={[0.5, 2.25, 0.5]} />
         <meshStandardMaterial color={color} metalness={0.2} roughness={0.1} />
       </mesh>
     </group>
