@@ -4,17 +4,33 @@ const COLOR = "hotpink"
 
 const HorizontalWall = (props: MeshProps) => (
   <mesh {...props}>
-    <boxGeometry args={[18, 0.1, 0.1]} />
+    <boxGeometry args={[18, 0.1, 0.3]} />
     <meshStandardMaterial color={COLOR} />
   </mesh>
 )
 
 const VerticalWall = (props: MeshProps) => (
   <mesh {...props}>
-    <boxGeometry args={[0.1, 10, 0.1]} />
+    <boxGeometry args={[0.1, 10, 0.3]} />
     <meshStandardMaterial color={COLOR} />
   </mesh>
 )
+
+const MiddleLine = () => (
+  <mesh>
+    <planeGeometry args={[0.05, 10]} />
+    <meshStandardMaterial color={COLOR} opacity={0.2} transparent />
+  </mesh>
+)
+
+const Background = () => {
+  return (
+    <mesh>
+      <planeGeometry args={[18, 10]} />
+      <meshStandardMaterial color={COLOR} opacity={0.075} transparent />
+    </mesh>
+  )
+}
 
 const Court = () => {
   return (
@@ -23,10 +39,8 @@ const Court = () => {
       <HorizontalWall position-y={+5} />
       <VerticalWall position-x={-8.95} />
       <VerticalWall position-x={+8.95} />
-      <mesh>
-        <planeGeometry args={[18, 10]} />
-        <meshStandardMaterial color={COLOR} opacity={0.075} transparent />
-      </mesh>
+      <MiddleLine />
+      <Background />
     </group>
   )
 }
