@@ -23,6 +23,10 @@ const Court = () => {
       <HorizontalWall position-y={+5} />
       <VerticalWall position-x={-8.95} />
       <VerticalWall position-x={+8.95} />
+      <mesh>
+        <planeGeometry args={[18, 10]} />
+        <meshStandardMaterial color={COLOR} opacity={0.075} transparent />
+      </mesh>
     </group>
   )
 }
