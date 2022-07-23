@@ -30,7 +30,7 @@ const Background = () => {
   })
 
   return (
-    <mesh position={[0, 0, -5]}>
+    <mesh position={[0, 0, -10]}>
       <planeGeometry args={[40, 30]} />
       <shaderMaterial {...shader} key={Math.random()} />
     </mesh>
