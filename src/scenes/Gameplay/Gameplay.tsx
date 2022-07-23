@@ -1,11 +1,13 @@
 import Ball from "./Ball"
+import Court from "./Court"
 import Paddle from "./Paddle"
 
 export default function Gameplay() {
   return (
     <group>
-      <Paddle color="hsl(130, 100%, 60%)" position-x={-7} />
-      <Paddle color="hsl(200, 100%, 60%)" position-x={+7} />
+      <Court />
+      <Paddle color="hsl(130, 100%, 60%)" position-x={-8} />
+      <Paddle color="hsl(200, 100%, 60%)" position-x={+8} />
       <Ball />
     </group>
   )
