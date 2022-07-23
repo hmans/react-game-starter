@@ -1,5 +1,6 @@
 import { Environment, OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
+import { Gameplay } from "./scenes/Gameplay"
 
 function App() {
   return (
@@ -7,10 +8,7 @@ function App() {
       <Environment preset="sunset" />
       <OrbitControls autoRotate />
 
-      <mesh>
-        <dodecahedronGeometry />
-        <meshPhysicalMaterial color="hotpink" metalness={0.2} roughness={0.1} />
-      </mesh>
+      <Gameplay />
     </Canvas>
   )
 }
