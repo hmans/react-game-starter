@@ -16,9 +16,11 @@ export default function Gameplay() {
       <Animate update={followMouse}>
         <Background />
         <Court />
-        <Paddle color="hsl(130, 100%, 60%)" position-x={-8} />
-        <Paddle color="hsl(200, 100%, 60%)" position-x={+8} />
-        <Ball />
+        <group position-z={0.5}>
+          <Paddle color="hsl(130, 100%, 60%)" position-x={-8} />
+          <Paddle color="hsl(200, 100%, 60%)" position-x={+8} />
+          <Ball />
+        </group>
       </Animate>
     </group>
   )
