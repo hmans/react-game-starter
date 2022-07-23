@@ -1,8 +1,10 @@
-export const Gameplay = () => {
+import Paddle from "./Paddle"
+
+export default function Gameplay() {
   return (
-    <mesh>
-      <dodecahedronGeometry />
-      <meshPhysicalMaterial color="hotpink" metalness={0.2} roughness={0.1} />
-    </mesh>
+    <group>
+      <Paddle color="hsl(130, 100%, 60%)" position-x={-2.5} />
+      <Paddle color="hsl(200, 100%, 60%)" position-x={+2.5} />
+    </group>
   )
 }
