@@ -1,12 +1,10 @@
 import {
-  $,
   Add,
-  Float,
   Mul,
   pipe,
+  Round,
   ShaderMaterialMaster,
   Time,
-  Vec3,
   VertexPosition
 } from "shader-composer"
 import { useShader } from "shader-composer-r3f"
@@ -19,7 +17,7 @@ const Background = () => {
       color: pipe(
         VertexPosition,
         (v) => Mul(v, 0.5),
-        (v) => Vec3($`round(${v})`),
+        (v) => Round(v),
         (v) => Add(v, Time()),
         (v) => Simplex3DNoise(v),
         (v) => Mul(v, 0.1),
