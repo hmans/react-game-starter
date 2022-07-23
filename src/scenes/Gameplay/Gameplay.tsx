@@ -1,13 +1,13 @@
-import { useThree } from "@react-three/fiber"
+import { lerp } from "three/src/math/MathUtils"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import Background from "./Background"
 import Ball from "./Ball"
 import Court from "./Court"
 import Paddle from "./Paddle"
 
-const followMouse: AnimationFunction = (dt, group, { mouse }) => {
-  group.rotation.x = mouse.y * 0.1
-  group.rotation.y = mouse.x * -0.1
+const followMouse: AnimationFunction = (dt, { rotation }, { mouse }) => {
+  rotation.x = lerp(rotation.x, mouse.y * 0.1, dt * 10)
+  rotation.y = lerp(rotation.y, mouse.x * -0.1, dt * 10)
 }
 
 export default function Gameplay() {
