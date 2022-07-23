@@ -22,7 +22,7 @@ const Background = () => {
         (v) => Simplex3DNoise(v),
         (v) => Mul(v, 0.1),
         (v) => Add(v, 0.1),
-        (v) => Mul(new Color("#888"), v)
+        (v) => Mul(new Color("#333"), v)
       )
     })
   })

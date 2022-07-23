@@ -27,7 +27,7 @@ const Background = () => {
   return (
     <mesh>
       <planeGeometry args={[18, 10]} />
-      <meshStandardMaterial color={COLOR} opacity={0.075} transparent />
+      <meshStandardMaterial color={COLOR} opacity={0.015} transparent />
     </mesh>
   )
 }
