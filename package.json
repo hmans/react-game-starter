@@ -22,6 +22,9 @@
     "@react-three/fiber": "^8.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "shader-composer": "^0.0.7",
+    "shader-composer-r3f": "^0.0.5",
+    "shader-composer-toybox": "^0.0.6",
     "three": "^0.142.0",
     "three-custom-shader-material": "^3.4.4"
   },
