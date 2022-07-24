@@ -1,11 +1,16 @@
 import { ECS } from "../state"
 
-const withVelocity = ECS.world.archetype("velocity").entities
+const withVelocity = ECS.world.archetype("velocity", "transform").entities
 
-const movement = (dt: number) => {
-  for (const entity of withVelocity) {
-    console.log(entity)
+export const movement = (dt: number) => {
+  for (const { transform, velocity } of withVelocity) {
+    /*
+    We're adding a 2D vector to a 3D position, so instead of going
+    through all the trouble of cloning and scaling vectors, let's
+    just update the x and y components individually.
+    */
+
+    transform.position.x += velocity.x * dt
+    transform.position.y += velocity.y * dt
   }
 }
-
-export default movement

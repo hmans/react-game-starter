@@ -1,4 +1,10 @@
+import { Animate, AnimationFunction } from "../../../lib/Animate"
 import { ECS } from "../state"
+
+const rotate: AnimationFunction = (dt, { rotation }) => {
+  rotation.x += 0.3 * dt
+  rotation.y += 0.7 * dt
+}
 
 export const Ball = () => (
   <ECS.Entity>
@@ -6,7 +12,16 @@ export const Ball = () => (
 
     <ECS.Component name="transform">
       <group>
-        <Ball />
+        <Animate update={rotate}>
+          <mesh>
+            <dodecahedronGeometry args={[0.4]} />
+            <meshStandardMaterial
+              color="white"
+              metalness={0.2}
+              roughness={0.1}
+            />
+          </mesh>
+        </Animate>
       </group>
     </ECS.Component>
 
