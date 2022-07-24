@@ -19,21 +19,21 @@ export const movement = (dt: number) => {
     */
     if (area) {
       /* Horizontal collision */
-      if (transform.position.x < area.min.x) {
+      if (transform.position.x < area.x1) {
         velocity.x = -velocity.x
-        transform.position.x = area.min.x
-      } else if (transform.position.x > area.max.x) {
+        transform.position.x = area.x1
+      } else if (transform.position.x > area.x2) {
         velocity.x = -velocity.x
-        transform.position.x = area.max.x
+        transform.position.x = area.x2
       }
 
       /* Vertical collision */
-      if (transform.position.y < area.min.y) {
+      if (transform.position.y < area.y1) {
         velocity.y = -velocity.y
-        transform.position.y = area.min.y
-      } else if (transform.position.y > area.max.y) {
+        transform.position.y = area.y1
+      } else if (transform.position.y > area.y2) {
         velocity.y = -velocity.y
-        transform.position.y = area.max.y
+        transform.position.y = area.y2
       }
     }
   }
