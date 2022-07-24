@@ -1,5 +1,6 @@
 import { Animate, AnimationFunction } from "../../../lib/Animate"
 import { Rect } from "../../../lib/Rect"
+import { courtHeight, courtWidth } from "../configuration"
 import { ECS } from "../state"
 
 const rotate: AnimationFunction = (dt, { rotation }) => {
@@ -30,6 +31,14 @@ export const Ball = () => (
       <vector2 x={8} y={4} />
     </ECS.Component>
 
-    <ECS.Component name="bounds" data={Rect(-8.5, -4.5, 8.5, 4.5)} />
+    <ECS.Component
+      name="bounds"
+      data={Rect(
+        -(courtWidth / 2 - 0.5),
+        -(courtHeight / 2 - 0.5),
+        +(courtWidth / 2 - 0.5),
+        +(courtHeight / 2 - 0.5)
+      )}
+    />
   </ECS.Entity>
 )
