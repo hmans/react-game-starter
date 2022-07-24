@@ -27,7 +27,7 @@ export const Ball = () => (
     </ECS.Component>
 
     <ECS.Component name="velocity">
-      <vector2 x={5} y={2} />
+      <vector2 x={8} y={4} />
     </ECS.Component>
 
     <ECS.Component name="bounds" data={Rect(-8.5, -4.5, 8.5, 4.5)} />
