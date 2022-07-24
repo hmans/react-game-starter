@@ -24,23 +24,24 @@ export default function Gameplay() {
 
         {/* Player */}
         <ECS.Entity>
-          <ECS.Component
-            name="render"
-            data={<Paddle color="hsl(130, 100%, 60%)" position-x={-8} />}
-          />
+          <ECS.Component name="transform">
+            <Paddle color="hsl(130, 100%, 60%)" position-x={-8} />
+          </ECS.Component>
         </ECS.Entity>
 
         {/* Enemy */}
         <ECS.Entity>
-          <ECS.Component
-            name="render"
-            data={<Paddle color="hsl(200, 100%, 60%)" position-x={+8} />}
-          />
+          <ECS.Component name="transform">
+            <Paddle color="hsl(200, 100%, 60%)" position-x={+8} />
+          </ECS.Component>
         </ECS.Entity>
 
         {/* Ball */}
         <ECS.Entity>
-          <ECS.Component name="render" data={<Ball />} />
+          <ECS.Component name="isBall" data={true} />
+          <ECS.Component name="transform">
+            <Ball />
+          </ECS.Component>
         </ECS.Entity>
       </Animate>
     </group>
