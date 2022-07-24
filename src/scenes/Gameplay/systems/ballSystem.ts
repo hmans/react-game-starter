@@ -1,3 +1,4 @@
+import { AABB, checkAABB } from "../../../lib/AABB"
 import { ECS, increaseEnemyScore, increasePlayerScore } from "../state"
 
 const { entities } = ECS.world.archetype("ball")
@@ -5,10 +6,6 @@ const { entities } = ECS.world.archetype("ball")
 export function ballSystem() {
   for (const { transform, velocity, ball } of entities) {
     const { bounds } = ball
-    /*
-    If an area component is present, check if the entity has left the
-    area; if so, reverse its velocity.
-    */
 
     /* Vertical collision */
     if (transform.position.y < bounds.y) {
