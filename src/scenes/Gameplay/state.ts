@@ -1,14 +1,15 @@
 import { Controller } from "@hmans/controlfreak"
-import { Tag } from "miniplex"
 import { createECS } from "miniplex-react"
-import { ReactElement } from "react"
 import { makeStore } from "statery"
 import { Box2, Object3D, Vector2 } from "three"
 
 type Entity = {
-  isPaddle?: Tag
   transform?: Object3D
   controller?: Controller
+
+  paddle?: {
+    bounds: Box2
+  }
 
   ball?: {
     bounds: Box2

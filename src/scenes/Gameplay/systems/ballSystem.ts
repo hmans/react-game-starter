@@ -3,7 +3,7 @@ import { ballRadius, paddleHeight, paddleWidth } from "../configuration"
 import { ECS, increaseEnemyScore, increasePlayerScore } from "../state"
 
 const { entities: balls } = ECS.world.archetype("ball")
-const { entities: paddles } = ECS.world.archetype("isPaddle")
+const { entities: paddles } = ECS.world.archetype("paddle")
 
 const ballDimensions = new Box2(
   new Vector2(-ballRadius, -ballRadius),

@@ -1,6 +1,6 @@
 import { ECS } from "../state"
 
-const { entities } = ECS.world.archetype("isPaddle", "velocity", "controller")
+const { entities } = ECS.world.archetype("paddle", "velocity", "controller")
 
 export function playerControlSystem() {
   for (const { velocity, controller } of entities) {

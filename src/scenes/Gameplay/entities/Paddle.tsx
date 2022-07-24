@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
-import { ColorRepresentation } from "three"
-import { paddleHeight, paddleWidth } from "../configuration"
+import { Box2, ColorRepresentation, Vector2 } from "three"
+import { courtHeight, paddleHeight, paddleWidth } from "../configuration"
 import { ECS } from "../state"
 
 export type PaddleProps = {
@@ -11,7 +11,15 @@ export type PaddleProps = {
 
 export const Paddle = ({ position, color, children }: PaddleProps) => (
   <ECS.Entity>
-    <ECS.Component name="isPaddle" data={true} />
+    <ECS.Component
+      name="paddle"
+      data={{
+        bounds: new Box2(
+          new Vector2(position, -(courtHeight / 2 - paddleHeight / 2)),
+          new Vector2(position, +(courtHeight / 2 - paddleHeight / 2))
+        )
+      }}
+    />
     <ECS.Component name="velocity">
       <vector2 />
     </ECS.Component>
