@@ -10,15 +10,6 @@ export function ballSystem() {
     area; if so, reverse its velocity.
     */
     if (bounds) {
-      /* Horizontal collision */
-      if (transform.position.x < bounds.x1) {
-        velocity.x = -velocity.x
-        transform.position.x = bounds.x1
-      } else if (transform.position.x > bounds.x2) {
-        velocity.x = -velocity.x
-        transform.position.x = bounds.x2
-      }
-
       /* Vertical collision */
       if (transform.position.y < bounds.y1) {
         velocity.y = -velocity.y
@@ -26,6 +17,17 @@ export function ballSystem() {
       } else if (transform.position.y > bounds.y2) {
         velocity.y = -velocity.y
         transform.position.y = bounds.y2
+      }
+
+      /* Horizontal collision with wall -- score! */
+      if (transform.position.x < bounds.x1) {
+        velocity.x = -velocity.x
+        transform.position.x = bounds.x1
+        console.log("ENEMY SCORES!")
+      } else if (transform.position.x > bounds.x2) {
+        velocity.x = -velocity.x
+        transform.position.x = bounds.x2
+        console.log("PLAYER SCORES!")
       }
     }
   }
