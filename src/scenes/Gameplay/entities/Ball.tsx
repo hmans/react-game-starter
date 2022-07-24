@@ -30,6 +30,6 @@ export const Ball = () => (
       <vector2 x={5} y={2} />
     </ECS.Component>
 
-    <ECS.Component name="area" data={Rect(-8.5, -4.5, 8.5, 4.5)} />
+    <ECS.Component name="bounds" data={Rect(-8.5, -4.5, 8.5, 4.5)} />
   </ECS.Entity>
 )

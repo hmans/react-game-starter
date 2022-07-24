@@ -8,7 +8,7 @@ export const Player = () => (
     <ECS.Component name="isPaddle" data={true} />
 
     <ECS.Component name="controller" data={controller} />
-    <ECS.Component name="area" data={Rect(-8, -3.5, -8, 3.5)} />
+    <ECS.Component name="bounds" data={Rect(-8, -3.5, -8, 3.5)} />
 
     <ECS.Component name="transform">
       <group position-x={-8}>

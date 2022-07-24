@@ -13,7 +13,7 @@ type Entity = {
   controller?: Controller
 
   velocity?: Vector2
-  area?: Rect
+  bounds?: Rect
 }
 
 export const ECS = createECS<Entity>()
