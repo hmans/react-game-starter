@@ -1,6 +1,6 @@
 import { AABB } from "../../../lib/AABB"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
-import { courtHeight, courtWidth } from "../configuration"
+import { ballRadius, courtHeight, courtWidth } from "../configuration"
 import { ECS } from "../state"
 
 const rotate: AnimationFunction = (dt, { rotation }) => {
@@ -16,7 +16,7 @@ export const Ball = () => (
       <group>
         <Animate update={rotate}>
           <mesh>
-            <dodecahedronGeometry args={[0.35]} />
+            <dodecahedronGeometry args={[ballRadius]} />
             <meshStandardMaterial
               color="white"
               metalness={0.2}
