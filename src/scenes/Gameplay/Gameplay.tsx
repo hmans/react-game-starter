@@ -14,7 +14,7 @@ export default function Gameplay() {
   useController(controller)
 
   /* Fetch the first "ball" entity from the ECS. */
-  const ball = ECS.useArchetype("ball").entities[0]
+  const ball = ECS.world.archetype("ball").entities[0]
 
   const followBall: AnimationFunction = useCallback(
     (_, { rotation }) => {

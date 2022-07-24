@@ -962,6 +962,11 @@ prop-types@^15.6.0:
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
+randomish@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/randomish/-/randomish-0.1.4.tgz#2bc44dbb9ddeb5e10c16d7acb1086415fa916bff"
+  integrity sha512-Apk+kYQjTJPuvg2MvxhmUcdxPjkzUl02LjxOn8UjERW338PQKsn2lFVf/mjSd1UMcRea4eHWrnVzoCBo0wEfrw==
+
 react-composer@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/react-composer/-/react-composer-5.0.3.tgz#7beb9513da5e8687f4f434ea1333ef36a4f3091b"

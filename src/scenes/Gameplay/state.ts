@@ -7,13 +7,15 @@ type Entity = {
   transform?: Object3D
   controller?: Controller
 
-  paddle?: {
-    bounds: Box2
-  }
+  /* Dimensions of the entity */
+  dimensions?: Box2
 
-  ball?: {
-    bounds: Box2
-  }
+  /* Area the entity is allowed to move in */
+  area?: Box2
+
+  paddle?: {}
+
+  ball?: {}
 
   velocity?: Vector2
 }

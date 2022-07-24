@@ -3,7 +3,7 @@ import { ECS } from "../state"
 const withVelocity = ECS.world.archetype("velocity", "transform").entities
 
 export const movementSystem = (dt: number) => {
-  for (const { transform, velocity, bounds } of withVelocity) {
+  for (const { transform, velocity, dimensions: bounds } of withVelocity) {
     /*
     We're adding a 2D vector to a 3D position, so instead of going
     through all the trouble of cloning and scaling vectors, let's
