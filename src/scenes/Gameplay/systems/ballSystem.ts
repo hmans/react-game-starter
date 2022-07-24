@@ -2,7 +2,7 @@ import { ECS } from "../state"
 
 const { entities } = ECS.world.archetype("ball")
 
-export function ball() {
+export function ballSystem() {
   for (const { transform, velocity, ball } of entities) {
     const { bounds } = ball
     /*

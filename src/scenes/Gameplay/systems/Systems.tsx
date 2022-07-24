@@ -1,13 +1,13 @@
 import { useFrame } from "@react-three/fiber"
-import { paddleSteering } from "./paddleSteering"
-import { movement } from "./movement"
-import { ball } from "./ball"
+import { playerControlSystem } from "./playerControlSystem"
+import { movementSystem } from "./movementSystem"
+import { ballSystem } from "./ballSystem"
 
 export const Systems = () => {
   useFrame((_, dt) => {
-    paddleSteering()
-    movement(dt)
-    ball()
+    playerControlSystem()
+    movementSystem(dt)
+    ballSystem()
   })
 
   return null
