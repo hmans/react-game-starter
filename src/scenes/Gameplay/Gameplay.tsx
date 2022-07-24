@@ -3,6 +3,7 @@ import { Animate, AnimationFunction } from "../../lib/Animate"
 import Background from "./Background"
 import Ball from "./Ball"
 import Court from "./Court"
+import Player from "./entities/Player"
 import Paddle from "./Paddle"
 
 const followMouse: AnimationFunction = (dt, { rotation }, { mouse }) => {
@@ -17,7 +18,7 @@ export default function Gameplay() {
         <Background />
         <Court />
         <group position-z={0.5}>
-          <Paddle color="hsl(130, 100%, 60%)" position-x={-8} />
+          <Player />
           <Paddle color="hsl(200, 100%, 60%)" position-x={+8} />
           <Ball />
         </group>
