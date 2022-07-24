@@ -1,5 +1,5 @@
+import { AABB } from "../../../lib/AABB"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
-import { Rect } from "../../../lib/Rect"
 import { courtHeight, courtWidth } from "../configuration"
 import { ECS } from "../state"
 
@@ -34,11 +34,11 @@ export const Ball = () => (
     <ECS.Component
       name="ball"
       data={{
-        bounds: Rect(
+        bounds: AABB(
           -(courtWidth / 2 - 0.5),
           -(courtHeight / 2 - 0.5),
-          +(courtWidth / 2 - 0.5),
-          +(courtHeight / 2 - 0.5)
+          courtWidth - 1,
+          courtHeight - 1
         )
       }}
     />

@@ -2,9 +2,9 @@ import { Controller } from "@hmans/controlfreak"
 import { Tag } from "miniplex"
 import { createECS } from "miniplex-react"
 import { ReactElement } from "react"
-import { Object3D, Vector2 } from "three"
-import { Rect } from "../../lib/Rect"
 import { makeStore } from "statery"
+import { Object3D, Vector2 } from "three"
+import { AABB } from "../../lib/AABB"
 
 type Entity = {
   isBall?: Tag
@@ -14,11 +14,10 @@ type Entity = {
   controller?: Controller
 
   ball?: {
-    bounds: Rect
+    bounds: AABB
   }
 
   velocity?: Vector2
-  bounds?: Rect
 }
 
 export const ECS = createECS<Entity>()

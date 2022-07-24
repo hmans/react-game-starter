@@ -11,22 +11,22 @@ export function ballSystem() {
     */
     if (bounds) {
       /* Vertical collision */
-      if (transform.position.y < bounds.y1) {
+      if (transform.position.y < bounds.y) {
         velocity.y = -velocity.y
-        transform.position.y = bounds.y1
-      } else if (transform.position.y > bounds.y2) {
+        transform.position.y = bounds.y
+      } else if (transform.position.y > bounds.y + bounds.height) {
         velocity.y = -velocity.y
-        transform.position.y = bounds.y2
+        transform.position.y = bounds.y + bounds.height
       }
 
       /* Horizontal collision with wall -- score! */
-      if (transform.position.x < bounds.x1) {
+      if (transform.position.x < bounds.x) {
         velocity.x = -velocity.x
-        transform.position.x = bounds.x1
+        transform.position.x = bounds.x
         increaseEnemyScore()
-      } else if (transform.position.x > bounds.x2) {
+      } else if (transform.position.x > bounds.x + bounds.width) {
         velocity.x = -velocity.x
-        transform.position.x = bounds.x2
+        transform.position.x = bounds.x + bounds.width
         increasePlayerScore()
       }
     }
