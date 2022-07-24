@@ -4,6 +4,7 @@ import { createECS } from "miniplex-react"
 import { ReactElement } from "react"
 import { Object3D, Vector2 } from "three"
 import { Rect } from "../../lib/Rect"
+import { makeStore } from "statery"
 
 type Entity = {
   isBall?: Tag
@@ -21,3 +22,8 @@ type Entity = {
 }
 
 export const ECS = createECS<Entity>()
+
+export const store = makeStore({
+  playerScore: 2,
+  enemyScore: 5
+})

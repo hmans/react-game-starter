@@ -6,6 +6,7 @@ import { useController } from "../../lib/useController"
 import Background from "./Background"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
+import { ScoreHUD } from "./ScoreHUD"
 import { ECS } from "./state"
 import { Systems } from "./systems/Systems"
 
@@ -31,6 +32,7 @@ export default function Gameplay() {
 
       <Animate update={followBall}>
         <Court position-z={-0.5} />
+        <ScoreHUD position={[0, 4, 1]} />
 
         <Player />
         <Enemy />
