@@ -3,8 +3,7 @@ import { Tag } from "miniplex"
 import { createECS } from "miniplex-react"
 import { ReactElement } from "react"
 import { makeStore } from "statery"
-import { Object3D, Vector2 } from "three"
-import { AABB } from "../../lib/AABB"
+import { Box2, Object3D, Vector2 } from "three"
 
 type Entity = {
   isBall?: Tag
@@ -14,7 +13,7 @@ type Entity = {
   controller?: Controller
 
   ball?: {
-    bounds: AABB
+    bounds: Box2
   }
 
   velocity?: Vector2

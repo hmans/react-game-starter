@@ -1,4 +1,4 @@
-import { AABB } from "../../../lib/AABB"
+import { Box2, Vector2 } from "three"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
 import { ballRadius, courtHeight, courtWidth } from "../configuration"
 import { ECS } from "../state"
@@ -34,11 +34,15 @@ export const Ball = () => (
     <ECS.Component
       name="ball"
       data={{
-        bounds: AABB(
-          -(courtWidth / 2 - 0.5),
-          -(courtHeight / 2 - 0.5),
-          courtWidth - 1,
-          courtHeight - 1
+        bounds: new Box2(
+          new Vector2(
+            -(courtWidth / 2 - ballRadius),
+            -(courtHeight / 2 - ballRadius)
+          ),
+          new Vector2(
+            +(courtWidth / 2 - ballRadius),
+            +(courtHeight / 2 - ballRadius)
+          )
         )
       }}
     />
