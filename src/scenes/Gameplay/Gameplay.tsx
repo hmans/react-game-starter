@@ -3,8 +3,10 @@ import { Animate, AnimationFunction } from "../../lib/Animate"
 import Background from "./Background"
 import Ball from "./Ball"
 import Court from "./Court"
+import { Entities } from "./Entities"
 import Player from "./entities/Player"
 import Paddle from "./Paddle"
+import { ECS } from "./state"
 
 const followMouse: AnimationFunction = (dt, { rotation }, { mouse }) => {
   rotation.x = lerp(rotation.x, mouse.y * 0.1, dt * 10)
@@ -15,13 +17,31 @@ export default function Gameplay() {
   return (
     <group>
       <Animate update={followMouse}>
+        <Entities />
+
         <Background />
-        <Court />
-        <group position-z={0.5}>
-          <Player />
-          <Paddle color="hsl(200, 100%, 60%)" position-x={+8} />
-          <Ball />
-        </group>
+        <Court position-z={-0.5} />
+
+        {/* Player */}
+        <ECS.Entity>
+          <ECS.Component
+            name="render"
+            data={<Paddle color="hsl(130, 100%, 60%)" position-x={-8} />}
+          />
+        </ECS.Entity>
+
+        {/* Enemy */}
+        <ECS.Entity>
+          <ECS.Component
+            name="render"
+            data={<Paddle color="hsl(200, 100%, 60%)" position-x={+8} />}
+          />
+        </ECS.Entity>
+
+        {/* Ball */}
+        <ECS.Entity>
+          <ECS.Component name="render" data={<Ball />} />
+        </ECS.Entity>
       </Animate>
     </group>
   )

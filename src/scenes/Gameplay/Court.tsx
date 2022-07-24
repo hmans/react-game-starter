@@ -1,4 +1,4 @@
-import { MeshProps } from "@react-three/fiber"
+import { GroupProps, MeshProps } from "@react-three/fiber"
 
 const COLOR = "hotpink"
 
@@ -32,9 +32,9 @@ const Background = () => {
   )
 }
 
-const Court = () => {
+const Court = (props: GroupProps) => {
   return (
-    <group>
+    <group {...props}>
       <HorizontalWall position-y={-5} />
       <HorizontalWall position-y={+5} />
       <VerticalWall position-x={-8.95} />

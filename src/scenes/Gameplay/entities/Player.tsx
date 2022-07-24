@@ -4,9 +4,10 @@ import { ECS } from "../state"
 const Player = () => {
   return (
     <ECS.Entity>
-      <ECS.Component name="transform">
-        <Paddle color="hsl(130, 100%, 60%)" position-x={-8} />
-      </ECS.Component>
+      <ECS.Component
+        name="render"
+        data={<Paddle color="hsl(130, 100%, 60%)" position-x={-8} />}
+      />
     </ECS.Entity>
   )
 }
