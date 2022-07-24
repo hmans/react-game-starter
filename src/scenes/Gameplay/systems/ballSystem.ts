@@ -1,10 +1,11 @@
-import { AABB, checkAABB } from "../../../lib/AABB"
+import { checkAABB } from "../../../lib/AABB"
 import { ECS, increaseEnemyScore, increasePlayerScore } from "../state"
 
-const { entities } = ECS.world.archetype("ball")
+const { entities: balls } = ECS.world.archetype("ball")
+const { entities: paddles } = ECS.world.archetype("isPaddle")
 
 export function ballSystem() {
-  for (const { transform, velocity, ball } of entities) {
+  for (const { transform, velocity, ball } of balls) {
     const { bounds } = ball
 
     /* Vertical collision */
@@ -25,6 +26,10 @@ export function ballSystem() {
       velocity.x = -velocity.x
       transform.position.x = bounds.x + bounds.width
       increasePlayerScore()
+    }
+
+    /* Check paddle collisions */
+    for (const paddle of paddles) {
     }
   }
 }
