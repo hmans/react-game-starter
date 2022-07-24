@@ -6,7 +6,6 @@ import { makeStore } from "statery"
 import { Box2, Object3D, Vector2 } from "three"
 
 type Entity = {
-  isBall?: Tag
   isPaddle?: Tag
   render?: ReactElement
   transform?: Object3D

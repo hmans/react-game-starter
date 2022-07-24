@@ -1,5 +1,4 @@
 import { useCallback } from "react"
-import { lerp } from "three/src/math/MathUtils"
 import { controller } from "../../input/controller"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { useController } from "../../lib/useController"
@@ -14,8 +13,8 @@ export default function Gameplay() {
   /* Initialize and update game input */
   useController(controller)
 
-  /* Fetch the first "isBall" entity from the ECS. */
-  const ball = ECS.useArchetype("isBall").entities[0]
+  /* Fetch the first "ball" entity from the ECS. */
+  const ball = ECS.useArchetype("ball").entities[0]
 
   const followBall: AnimationFunction = useCallback(
     (_, { rotation }) => {

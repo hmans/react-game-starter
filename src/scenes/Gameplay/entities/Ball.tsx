@@ -10,8 +10,6 @@ const rotate: AnimationFunction = (dt, { rotation }) => {
 
 export const Ball = () => (
   <ECS.Entity>
-    <ECS.Component name="isBall" data={true} />
-
     <ECS.Component name="transform">
       <group>
         <Animate update={rotate}>
