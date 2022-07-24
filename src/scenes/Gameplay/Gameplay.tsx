@@ -1,5 +1,7 @@
 import { lerp } from "three/src/math/MathUtils"
+import { controller } from "../../input/controller"
 import { Animate, AnimationFunction } from "../../lib/Animate"
+import { useController } from "../../lib/useController"
 import Background from "./Background"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
@@ -11,6 +13,8 @@ const followMouse: AnimationFunction = (dt, { rotation }, { mouse }) => {
 }
 
 export default function Gameplay() {
+  useController(controller)
+
   return (
     <group>
       <Animate update={followMouse}>

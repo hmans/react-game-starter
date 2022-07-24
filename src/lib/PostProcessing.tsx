@@ -1,3 +1,8 @@
+/*
+Welcome to some truly terrible postprocessing setup code. This should
+eventually be replaced with a couple of JSX nodes from react-three/postprocessing.
+*/
+
 import { useFrame, useThree } from "@react-three/fiber"
 import {
   BlendFunction,
