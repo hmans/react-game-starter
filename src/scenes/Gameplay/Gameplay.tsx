@@ -17,10 +17,10 @@ export default function Gameplay() {
   const ball = ECS.useArchetype("isBall").entities[0]
 
   const followBall: AnimationFunction = useCallback(
-    (dt, { rotation }) => {
+    (_, { rotation }) => {
       if (!ball) return
-      rotation.x = lerp(rotation.x, ball.transform.position.y / -20, dt)
-      rotation.y = lerp(rotation.y, ball.transform.position.x / 60, dt)
+      rotation.x = ball.transform.position.y / -14
+      rotation.y = ball.transform.position.x / 40
     },
     [ball]
   )
