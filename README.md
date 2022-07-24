@@ -9,7 +9,8 @@
 
 - To provide a solid starting template for React- and Three.js-powered games;
 - To act as a sanity check for the libraries used;
-- To prove that React game development is a thing (and one of beauty!)
+- To prove that React game development is a thing (and one of beauty!);
+- To document and demonstrate a sane and scalable project structure.
 
 ### Getting Started
 
