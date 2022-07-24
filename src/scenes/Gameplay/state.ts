@@ -7,7 +7,6 @@ import { Box2, Object3D, Vector2 } from "three"
 
 type Entity = {
   isPaddle?: Tag
-  render?: ReactElement
   transform?: Object3D
   controller?: Controller
 
