@@ -24,6 +24,12 @@ type Entity = {
 export const ECS = createECS<Entity>()
 
 export const store = makeStore({
-  playerScore: 2,
-  enemyScore: 5
+  playerScore: 0,
+  enemyScore: 0
 })
+
+export const increasePlayerScore = () =>
+  store.set(({ playerScore }) => ({ playerScore: playerScore + 1 }))
+
+export const increaseEnemyScore = () =>
+  store.set(({ enemyScore }) => ({ enemyScore: enemyScore + 1 }))

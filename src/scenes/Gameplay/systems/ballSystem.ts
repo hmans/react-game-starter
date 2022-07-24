@@ -1,4 +1,4 @@
-import { ECS } from "../state"
+import { ECS, increaseEnemyScore, increasePlayerScore } from "../state"
 
 const { entities } = ECS.world.archetype("ball")
 
@@ -23,11 +23,11 @@ export function ballSystem() {
       if (transform.position.x < bounds.x1) {
         velocity.x = -velocity.x
         transform.position.x = bounds.x1
-        console.log("ENEMY SCORES!")
+        increaseEnemyScore()
       } else if (transform.position.x > bounds.x2) {
         velocity.x = -velocity.x
         transform.position.x = bounds.x2
-        console.log("PLAYER SCORES!")
+        increasePlayerScore()
       }
     }
   }
