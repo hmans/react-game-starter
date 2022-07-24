@@ -1,16 +1,3 @@
-import { Rect } from "../../../lib/Rect"
-import Paddle from "../Paddle"
-import { ECS } from "../state"
+import { Paddle } from "./Paddle"
 
-export const Enemy = () => (
-  <ECS.Entity>
-    <ECS.Component name="isPaddle" data={true} />
-    <ECS.Component name="bounds" data={Rect(8, -3.5, 8, 3.5)} />
-
-    <ECS.Component name="transform">
-      <group position-x={+8}>
-        <Paddle color="hsl(200, 100%, 60%)" />
-      </group>
-    </ECS.Component>
-  </ECS.Entity>
-)
+export const Enemy = () => <Paddle position={8} color="hsl(200, 100%, 60%)" />
