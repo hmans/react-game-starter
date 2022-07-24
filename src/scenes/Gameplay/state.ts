@@ -12,6 +12,10 @@ type Entity = {
   transform?: Object3D
   controller?: Controller
 
+  ball?: {
+    bounds: Rect
+  }
+
   velocity?: Vector2
   bounds?: Rect
 }

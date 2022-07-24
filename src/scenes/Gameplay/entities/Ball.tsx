@@ -32,13 +32,15 @@ export const Ball = () => (
     </ECS.Component>
 
     <ECS.Component
-      name="bounds"
-      data={Rect(
-        -(courtWidth / 2 - 0.5),
-        -(courtHeight / 2 - 0.5),
-        +(courtWidth / 2 - 0.5),
-        +(courtHeight / 2 - 0.5)
-      )}
+      name="ball"
+      data={{
+        bounds: Rect(
+          -(courtWidth / 2 - 0.5),
+          -(courtHeight / 2 - 0.5),
+          +(courtWidth / 2 - 0.5),
+          +(courtHeight / 2 - 0.5)
+        )
+      }}
     />
   </ECS.Entity>
 )
