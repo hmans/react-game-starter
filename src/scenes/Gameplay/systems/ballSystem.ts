@@ -9,12 +9,12 @@ const tmpBox2 = new Box2()
 
 export function ballSystem() {
   for (const { transform, velocity } of balls) {
-    /* Collision with upper bounds */
     const verticalRange = courtHeight / 2 - ballRadius
     const horizontalRange = courtWidth / 2 - ballRadius
     const verticalOverstep = verticalRange - Math.abs(transform.position.y)
     const horizontalOverstep = horizontalRange - Math.abs(transform.position.x)
 
+    /* Collision with upper bounds - just bounce off the wall */
     if (transform.position.y < -verticalRange) {
       velocity.y *= -1
       transform.position.y -= verticalOverstep
