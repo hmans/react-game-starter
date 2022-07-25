@@ -22,7 +22,11 @@ export const translateAABB = (aabb: AABB, x: number, y: number): AABB => ({
   y2: aabb.y2 + y
 })
 
-export type CollisionCallback = (entity: IEntity, other: IEntity) => void
+export type CollisionCallback = (
+  entity: IEntity,
+  other: IEntity,
+  intersect: AABB
+) => void
 
 export interface ICollisionComponents {
   collision: {
@@ -70,8 +74,20 @@ export const makeCollisionSystem = <
           continue
         }
 
+        const intersect = AABB(
+          Math.max(aabb.x1, otherAabb.x1),
+          Math.max(aabb.y1, otherAabb.y1),
+          Math.min(aabb.x2, otherAabb.x2),
+          Math.min(aabb.y2, otherAabb.y2)
+        )
+
+        const delta = [intersect.x2 - intersect.x1, intersect.y2 - intersect.y1]
+
+        // entity.transform.position.x -= Math.sign(entity.velocity.x) * delta[0]
+        // entity.velocity.x *= -1
+
         if (entity.collision.onCollide) {
-          entity.collision.onCollide(entity, other)
+          entity.collision.onCollide(entity, other, intersect)
         }
       }
     }
