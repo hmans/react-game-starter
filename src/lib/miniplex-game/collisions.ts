@@ -64,7 +64,6 @@ export const makeCollisionSystem = <
           other.transform.position.y
         )
 
-        /* Check overlap */
         if (
           aabb.x1 > otherAabb.x2 ||
           aabb.x2 < otherAabb.x1 ||
@@ -74,19 +73,14 @@ export const makeCollisionSystem = <
           continue
         }
 
-        const intersect = AABB(
-          Math.max(aabb.x1, otherAabb.x1),
-          Math.max(aabb.y1, otherAabb.y1),
-          Math.min(aabb.x2, otherAabb.x2),
-          Math.min(aabb.y2, otherAabb.y2)
-        )
-
-        const delta = [intersect.x2 - intersect.x1, intersect.y2 - intersect.y1]
-
-        // entity.transform.position.x -= Math.sign(entity.velocity.x) * delta[0]
-        // entity.velocity.x *= -1
-
         if (entity.collision.onCollide) {
+          const intersect = AABB(
+            Math.max(aabb.x1, otherAabb.x1),
+            Math.max(aabb.y1, otherAabb.y1),
+            Math.min(aabb.x2, otherAabb.x2),
+            Math.min(aabb.y2, otherAabb.y2)
+          )
+
           entity.collision.onCollide(entity, other, intersect)
         }
       }

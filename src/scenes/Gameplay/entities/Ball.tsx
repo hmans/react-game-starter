@@ -43,7 +43,10 @@ export const Ball = () => {
         data={{
           aabb: AABB(-ballRadius, -ballRadius, ballRadius, ballRadius),
 
-          onCollide: (ball, other, intersect) => {}
+          onCollide: (ball, other, intersect) => {
+            const dx = intersect.x2 - intersect.x1
+            const dy = intersect.y2 - intersect.y1
+          }
         }}
       />
     </ECS.Entity>
