@@ -6,7 +6,7 @@ import { collisionSystem } from "../../../lib/collisions"
 import { ECS } from "../state"
 
 export const Systems = () => {
-  const collisions = collisionSystem(ECS.world, "collisions")
+  const collisions = collisionSystem(ECS.world)
 
   useFrame((_, dt) => {
     playerControlSystem()

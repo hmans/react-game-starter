@@ -1,4 +1,4 @@
-import { IEntity, World } from "miniplex"
+import { IEntity, RegisteredEntity, World } from "miniplex"
 
 export type AABB = {
   x1: number
@@ -16,17 +16,39 @@ export const AABB = (x1: number, y1: number, x2: number, y2: number): AABB => ({
 
 export type CollisionCallback = (other: IEntity) => void
 
-export type ICollisionComponent = {
-  aabb: AABB
-  onCollide?: CollisionCallback
+export type ICollisionComponents = {
+  collision: {
+    aabb: AABB
+    onCollide?: CollisionCallback
+  }
 }
 
-export const collisionSystem = (world: World, componentName: string) => {
-  const { entities } = world.archetype(componentName)
+export const collisionSystem = (world: World<ICollisionComponents>) => {
+  const { entities } = world.archetype("collision")
 
   return () => {
     for (const { collision } of entities) {
-      /* Collide the rest of the f'ing owl */
+      /* Check this entity's AABB against all other entities */
+      for (const other of entities) {
+        if (other.collision === collision) {
+          continue
+        }
+
+        const aabb = collision.aabb
+        const otherAabb = other.collision.aabb
+
+        if (aabb.x1 > otherAabb.x2 || aabb.x2 < otherAabb.x1) {
+          continue
+        }
+
+        if (aabb.y1 > otherAabb.y2 || aabb.y2 < otherAabb.y1) {
+          continue
+        }
+
+        if (collision.onCollide) {
+          collision.onCollide(other)
+        }
+      }
     }
   }
 }
