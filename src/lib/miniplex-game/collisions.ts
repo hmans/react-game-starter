@@ -1,5 +1,6 @@
 import { IEntity, World } from "miniplex"
 import { ITransformComponents } from "./transform"
+import { IVelocityComponents } from "./velocity"
 
 export type AABB = {
   x1: number
@@ -31,12 +32,13 @@ export type CollisionCallback = (
 export interface ICollisionComponents {
   collision: {
     aabb: AABB
+    type: "static" | "dynamic"
     onCollide?: CollisionCallback
   }
 }
 
 export const makeCollisionSystem = <
-  T extends ICollisionComponents & ITransformComponents
+  T extends ICollisionComponents & ITransformComponents & IVelocityComponents
 >(
   world: World<T>
 ) => {
@@ -80,6 +82,16 @@ export const makeCollisionSystem = <
             Math.min(aabb.x2, otherAabb.x2),
             Math.min(aabb.y2, otherAabb.y2)
           )
+
+          /* If this entity is dynamic, solve the collision by moving the entity */
+          if (entity.collision.type === "dynamic") {
+            const directionX = Math.sign(entity.velocity.x)
+            const directionY = Math.sign(entity.velocity.y)
+
+            entity.transform.position.x -=
+              directionX * (intersect.x2 - intersect.x1)
+            entity.velocity.x *= -1
+          }
 
           entity.collision.onCollide(entity, other, intersect)
         }

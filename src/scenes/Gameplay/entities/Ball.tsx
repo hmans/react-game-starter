@@ -41,6 +41,8 @@ export const Ball = () => {
       <ECS.Component
         name="collision"
         data={{
+          type: "dynamic",
+
           aabb: AABB(-ballRadius, -ballRadius, ballRadius, ballRadius),
 
           onCollide: (ball, other, intersect) => {

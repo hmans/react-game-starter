@@ -29,6 +29,8 @@ export const Paddle = ({ position, color, children }: PaddleProps) => (
     <ECS.Component
       name="collision"
       data={{
+        type: "static",
+
         aabb: AABB(
           -paddleWidth / 2,
           -paddleHeight / 2,
