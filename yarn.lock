@@ -330,6 +330,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@radix-ui/react-icons@^1.0.3":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-icons/-/react-icons-1.1.1.tgz#38d2aa548035dd3b799c169bd17177b1cec3152b"
+  integrity sha512-xc3wQC59rsFylVbSusQCrrM+6695ppF730Q6yqzhRdqDcRNWIm2R6ngpzBoSOQMcwnq4p805F+Gr7xo4fmtN1A==
+
 "@react-spring/animated@~9.5.2":
   version "9.5.2"
   resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.5.2.tgz#42785b4f369d9715e9ee32c04b78483e7bb85489"
@@ -411,6 +416,11 @@
     scheduler "^0.21.0"
     suspend-react "^0.0.8"
     zustand "^3.7.1"
+
+"@stitches/react@^1.2.6":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.8.tgz#954f8008be8d9c65c4e58efa0937f32388ce3a38"
+  integrity sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==
 
 "@types/prop-types@*":
   version "15.7.5"
@@ -961,6 +971,15 @@ prop-types@^15.6.0:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.13.1"
+
+r3f-perf@^6.4.2:
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/r3f-perf/-/r3f-perf-6.4.2.tgz#bc04d4f0bb6a318bee2fce21382a6ad5f8f1b43b"
+  integrity sha512-DUsNOZhEiqpnyceVD/oCB65nwzS/jN43AAEQWxAt/ijZWKuQLa8Hi/uDHGCdUfZ/mfFVFRmvuPsFJrZZPV6aEg==
+  dependencies:
+    "@radix-ui/react-icons" "^1.0.3"
+    "@stitches/react" "^1.2.6"
+    zustand "^3.7.1"
 
 randomish@^0.1.4:
   version "0.1.4"
