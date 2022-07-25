@@ -16,14 +16,16 @@ export const AABB = (x1: number, y1: number, x2: number, y2: number): AABB => ({
 
 export type CollisionCallback = (other: IEntity) => void
 
-export type ICollisionComponents = {
+export interface ICollisionComponents {
   collision: {
     aabb: AABB
     onCollide?: CollisionCallback
   }
 }
 
-export const collisionSystem = (world: World<ICollisionComponents>) => {
+export const makeCollisionSystem = <T extends ICollisionComponents>(
+  world: World<T>
+) => {
   const { entities } = world.archetype("collision")
 
   return () => {

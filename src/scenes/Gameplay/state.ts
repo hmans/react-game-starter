@@ -1,18 +1,17 @@
 import { Controller } from "@hmans/controlfreak"
 import { createECS } from "miniplex-react"
 import { makeStore } from "statery"
-import { Object3D, Vector2 } from "three"
-import { ICollisionComponents } from "../../lib/collisions"
+import { ICollisionComponents } from "../../lib/miniplex-game/collisions"
+import { ITransformComponents } from "../../lib/miniplex-game/transform"
+import { IVelocityComponents } from "../../lib/miniplex-game/velocity"
 
 type Entity = {
-  transform?: Object3D
   controller?: Controller
-
   paddle?: {}
   ball?: {}
-
-  velocity?: Vector2
-} & ICollisionComponents
+} & ITransformComponents &
+  ICollisionComponents &
+  IVelocityComponents
 
 export const ECS = createECS<Entity>()
 
