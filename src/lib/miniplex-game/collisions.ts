@@ -70,7 +70,6 @@ export const makeCollisionSystem = <
           continue
         }
 
-        console.log("COLLIDE!")
         if (entity.collision.onCollide) {
           entity.collision.onCollide(other)
         }

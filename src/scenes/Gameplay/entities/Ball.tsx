@@ -40,7 +40,13 @@ export const Ball = () => {
 
       <ECS.Component
         name="collision"
-        data={{ aabb: AABB(-ballRadius, -ballRadius, ballRadius, ballRadius) }}
+        data={{
+          aabb: AABB(-ballRadius, -ballRadius, ballRadius, ballRadius),
+
+          onCollide: (other) => {
+            console.log("Ball collided with", other)
+          }
+        }}
       />
     </ECS.Entity>
   )
