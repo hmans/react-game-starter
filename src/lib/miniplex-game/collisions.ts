@@ -22,7 +22,7 @@ export const translateAABB = (aabb: AABB, x: number, y: number): AABB => ({
   y2: aabb.y2 + y
 })
 
-export type CollisionCallback = (other: IEntity) => void
+export type CollisionCallback = (entity: IEntity, other: IEntity) => void
 
 export interface ICollisionComponents {
   collision: {
@@ -71,7 +71,7 @@ export const makeCollisionSystem = <
         }
 
         if (entity.collision.onCollide) {
-          entity.collision.onCollide(other)
+          entity.collision.onCollide(entity, other)
         }
       }
     }
