@@ -13,41 +13,47 @@ const rotate: AnimationFunction = (dt, { rotation }) => {
 export const Ball = () => {
   return (
     <ECS.Entity>
-      <ECS.Component name="transform">
-        <group>
-          <Animate update={rotate}>
-            <mesh>
-              <dodecahedronGeometry args={[ballRadius]} />
-              <meshStandardMaterial
-                color="white"
-                metalness={0.2}
-                roughness={0.1}
-              />
-            </mesh>
-          </Animate>
-        </group>
-      </ECS.Component>
+      {(entity) => {
+        return (
+          <>
+            <ECS.Component name="transform">
+              <group>
+                <Animate update={rotate}>
+                  <mesh>
+                    <dodecahedronGeometry args={[ballRadius]} />
+                    <meshStandardMaterial
+                      color="white"
+                      metalness={0.2}
+                      roughness={0.1}
+                    />
+                  </mesh>
+                </Animate>
+              </group>
+            </ECS.Component>
 
-      <ECS.Component
-        name="velocity"
-        data={new Vector2()
-          .copy(insideCircle() as Vector2)
-          .normalize()
-          .multiplyScalar(15)}
-      />
+            <ECS.Component
+              name="velocity"
+              data={new Vector2()
+                .copy(insideCircle() as Vector2)
+                .normalize()
+                .multiplyScalar(15)}
+            />
 
-      <ECS.Component name="ball" data={{}} />
+            <ECS.Component name="ball" data={{}} />
 
-      <ECS.Component
-        name="collision"
-        data={{
-          aabb: AABB(-ballRadius, -ballRadius, ballRadius, ballRadius),
+            <ECS.Component
+              name="collision"
+              data={{
+                aabb: AABB(-ballRadius, -ballRadius, ballRadius, ballRadius),
 
-          onCollide: (other) => {
-            console.log("Ball collided with", other)
-          }
-        }}
-      />
+                onCollide: (other) => {
+                  entity.velocity.x *= -1
+                }
+              }}
+            />
+          </>
+        )
+      }}
     </ECS.Entity>
   )
 }
