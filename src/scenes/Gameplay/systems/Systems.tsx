@@ -1,9 +1,11 @@
 import { useFrame } from "@react-three/fiber"
-import { playerControlSystem } from "./playerControlSystem"
-import { ballSystem } from "./ballSystem"
-import { makeCollisionSystem } from "../../../lib/miniplex-game/collisions"
+import {
+  makeCollisionSystem,
+  makeMovementSystem
+} from "../../../lib/miniplex-game"
 import { ECS } from "../state"
-import { makeMovementSystem } from "../../../lib/miniplex-game/velocity"
+import { ballSystem } from "./ballSystem"
+import { playerControlSystem } from "./playerControlSystem"
 
 export const Systems = () => {
   const collisionSystem = makeCollisionSystem(ECS.world)
