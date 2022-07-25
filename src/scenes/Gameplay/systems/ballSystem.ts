@@ -1,41 +1,35 @@
-import { Box2, Vector2 } from "three"
-import { ballRadius } from "../configuration"
-import { ECS, increaseEnemyScore, increasePlayerScore } from "../state"
+import { Box2 } from "three"
+import { ballRadius, courtHeight, courtWidth } from "../configuration"
+import { ECS } from "../state"
 
 const { entities: balls } = ECS.world.archetype("ball")
 const { entities: paddles } = ECS.world.archetype("paddle")
 
-const ballDimensions = new Box2(
-  new Vector2(-ballRadius, -ballRadius),
-  new Vector2(+ballRadius, +ballRadius)
-)
-
 const tmpBox2 = new Box2()
 
 export function ballSystem() {
-  for (const { transform, velocity, area } of balls) {
-    const ballAABB = tmpBox2
-      .copy(ballDimensions)
-      .translate(new Vector2(transform.position.x, transform.position.y))
+  for (const { transform, velocity } of balls) {
+    /* Collision with upper bounds */
+    const verticalRange = courtHeight / 2 - ballRadius
+    const horizontalRange = courtWidth / 2 - ballRadius
+    const verticalOverstep = verticalRange - Math.abs(transform.position.y)
+    const horizontalOverstep = horizontalRange - Math.abs(transform.position.x)
 
-    /* Vertical collision */
-    if (ballAABB.min.y < area.min.y) {
-      velocity.y = -velocity.y
-      transform.position.y += area.min.y - ballAABB.min.y
-    } else if (ballAABB.max.y > area.max.y) {
-      velocity.y = -velocity.y
-      transform.position.y -= ballAABB.max.y - area.max.y
+    if (transform.position.y < -verticalRange) {
+      velocity.y *= -1
+      transform.position.y -= verticalOverstep
+    } else if (transform.position.y > verticalRange) {
+      velocity.y *= -1
+      transform.position.y += verticalOverstep
     }
 
     /* Horizontal collision with wall -- score! */
-    if (ballAABB.min.x < area.min.x) {
-      velocity.x = -velocity.x
-      transform.position.x += area.min.x - ballAABB.min.x
-      increaseEnemyScore()
-    } else if (ballAABB.max.x > area.max.x) {
-      velocity.x = -velocity.x
-      transform.position.x -= ballAABB.max.x - area.max.x
-      increasePlayerScore()
+    if (transform.position.x < -horizontalRange) {
+      velocity.x *= -1
+      transform.position.x -= horizontalOverstep
+    } else if (transform.position.x > horizontalRange) {
+      velocity.x *= -1
+      transform.position.x += horizontalOverstep
     }
 
     /* Check paddle collisions */

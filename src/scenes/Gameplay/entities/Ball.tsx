@@ -1,7 +1,7 @@
 import { insideCircle } from "randomish"
-import { Box2, Vector2 } from "three"
+import { Vector2 } from "three"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
-import { ballRadius, courtHeight, courtWidth } from "../configuration"
+import { ballRadius } from "../configuration"
 import { ECS } from "../state"
 
 const rotate: AnimationFunction = (dt, { rotation }) => {
@@ -32,30 +32,10 @@ export const Ball = () => {
         data={new Vector2()
           .copy(insideCircle() as Vector2)
           .normalize()
-          .multiplyScalar(12)}
+          .multiplyScalar(15)}
       />
 
       <ECS.Component name="ball" data={{}} />
-
-      <ECS.Component
-        name="dimensions"
-        data={
-          new Box2(
-            new Vector2(-ballRadius, -ballRadius),
-            new Vector2(ballRadius, ballRadius)
-          )
-        }
-      />
-
-      <ECS.Component
-        name="area"
-        data={
-          new Box2(
-            new Vector2(-(courtWidth / 2), -(courtHeight / 2)),
-            new Vector2(+(courtWidth / 2), +(courtHeight / 2))
-          )
-        }
-      />
     </ECS.Entity>
   )
 }
