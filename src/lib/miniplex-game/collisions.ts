@@ -1,4 +1,5 @@
-import { IEntity, RegisteredEntity, World } from "miniplex"
+import { IEntity, World } from "miniplex"
+import { ITransformComponents } from "./transform"
 
 export type AABB = {
   x1: number
@@ -14,6 +15,13 @@ export const AABB = (x1: number, y1: number, x2: number, y2: number): AABB => ({
   y2
 })
 
+export const translateAABB = (aabb: AABB, x: number, y: number): AABB => ({
+  x1: aabb.x1 + x,
+  y1: aabb.y1 + y,
+  x2: aabb.x2 + x,
+  y2: aabb.y2 + y
+})
+
 export type CollisionCallback = (other: IEntity) => void
 
 export interface ICollisionComponents {
@@ -23,32 +31,48 @@ export interface ICollisionComponents {
   }
 }
 
-export const makeCollisionSystem = <T extends ICollisionComponents>(
+export const makeCollisionSystem = <
+  T extends ICollisionComponents & ITransformComponents
+>(
   world: World<T>
 ) => {
   const { entities } = world.archetype("collision")
 
   return () => {
-    for (const { collision } of entities) {
+    for (const entity of entities) {
       /* Check this entity's AABB against all other entities */
       for (const other of entities) {
-        if (other.collision === collision) {
+        /* Don't collide objects with themselves */
+        if (other === entity) {
           continue
         }
 
-        const aabb = collision.aabb
-        const otherAabb = other.collision.aabb
+        /* Generate world-space AABBs */
+        const aabb = translateAABB(
+          entity.collision.aabb,
+          entity.transform.position.x,
+          entity.transform.position.y
+        )
 
-        if (aabb.x1 > otherAabb.x2 || aabb.x2 < otherAabb.x1) {
+        const otherAabb = translateAABB(
+          other.collision.aabb,
+          other.transform.position.x,
+          other.transform.position.y
+        )
+
+        /* Check overlap */
+        if (
+          aabb.x1 > otherAabb.x2 ||
+          aabb.x2 < otherAabb.x1 ||
+          aabb.y1 > otherAabb.y2 ||
+          aabb.y2 < otherAabb.y1
+        ) {
           continue
         }
 
-        if (aabb.y1 > otherAabb.y2 || aabb.y2 < otherAabb.y1) {
-          continue
-        }
-
-        if (collision.onCollide) {
-          collision.onCollide(other)
+        console.log("COLLIDE!")
+        if (entity.collision.onCollide) {
+          entity.collision.onCollide(other)
         }
       }
     }

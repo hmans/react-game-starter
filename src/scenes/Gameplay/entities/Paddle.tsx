@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 import { ColorRepresentation } from "three"
 import { paddleHeight, paddleWidth } from "../configuration"
 import { ECS } from "../state"
+import { AABB } from "../../../lib/miniplex-game"
 
 export type PaddleProps = {
   children?: ReactNode
@@ -24,6 +25,18 @@ export const Paddle = ({ position, color, children }: PaddleProps) => (
         </mesh>
       </group>
     </ECS.Component>
+
+    <ECS.Component
+      name="collision"
+      data={{
+        aabb: AABB(
+          -paddleWidth / 2,
+          -paddleHeight / 2,
+          paddleWidth / 2,
+          paddleHeight / 2
+        )
+      }}
+    />
 
     {children}
   </ECS.Entity>
