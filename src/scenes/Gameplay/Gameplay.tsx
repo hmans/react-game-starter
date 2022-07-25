@@ -14,6 +14,7 @@ export default function Gameplay() {
   useController(controller)
 
   /* Fetch the first "ball" entity from the ECS. */
+  /* TODO: this needs to subscibe reactively, otherwise it will never pick up the ball */
   const ball = ECS.world.archetype("ball").entities[0]
 
   const followBall: AnimationFunction = useCallback(

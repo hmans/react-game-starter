@@ -1,7 +1,6 @@
 import { insideCircle } from "randomish"
 import { Vector2 } from "three"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
-import { AABB } from "../../../lib/miniplex-game"
 import { ballRadius } from "../configuration"
 import { ECS } from "../state"
 
@@ -37,20 +36,6 @@ export const Ball = () => {
       />
 
       <ECS.Component name="ball" data={{}} />
-
-      <ECS.Component
-        name="collision"
-        data={{
-          type: "dynamic",
-
-          aabb: AABB(-ballRadius, -ballRadius, ballRadius, ballRadius),
-
-          onCollide: (ball, other, intersect) => {
-            const dx = intersect.x2 - intersect.x1
-            const dy = intersect.y2 - intersect.y1
-          }
-        }}
-      />
     </ECS.Entity>
   )
 }
