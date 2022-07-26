@@ -11,7 +11,7 @@ export type PaddleProps = {
 
 export const Paddle = ({ position, color, children }: PaddleProps) => (
   <ECS.Entity>
-    <ECS.Component name="paddle" data={{}} />
+    <ECS.Component name="paddle" data={{ speed: 12 }} />
     <ECS.Component name="velocity">
       <vector2 />
     </ECS.Component>

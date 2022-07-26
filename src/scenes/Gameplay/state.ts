@@ -5,7 +5,9 @@ import { Object3D, Vector2 } from "three"
 
 type Entity = {
   controller?: Controller
-  paddle?: {}
+  paddle?: {
+    speed: number
+  }
   ball?: {}
 
   transform?: Object3D
