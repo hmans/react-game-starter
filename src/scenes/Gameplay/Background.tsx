@@ -25,7 +25,7 @@ const Background = () => {
         (v) => Mul(new Color("#333"), v)
       )
     })
-  })
+  }, [])
 
   return (
     <mesh position={[0, 0, -10]}>
