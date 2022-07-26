@@ -1,6 +1,6 @@
 import { Text } from "@react-three/drei"
 import { Keypress } from "../../lib/Keypress"
-import { enterGameplay } from "../../state/macroState"
+import { enterGameplay } from "../../state"
 
 export const TitleScene = () => (
   <>

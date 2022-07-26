@@ -1,5 +1,5 @@
 import { courtWidth, paddleWidth, playerColor } from "../configuration"
-import { setGameObject } from "../state/gameplay"
+import { setGameObject } from "../state"
 import { Paddle } from "./Paddle"
 
 export const Player = () => (

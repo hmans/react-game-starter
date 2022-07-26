@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber"
 import { controller } from "../../../input/controller"
 import { courtHeight, paddleHeight, paddleSpeed } from "../configuration"
-import { useGameplayStore } from "../state/gameplay"
+import { useGameplayStore } from "../state"
 
 export const PaddleSystem = () => {
   const { player, enemy } = useGameplayStore()

@@ -2,7 +2,7 @@ import { Text } from "@react-three/drei"
 import { GroupProps } from "@react-three/fiber"
 import { useStore } from "statery"
 import { enemyColor, playerColor } from "./configuration"
-import { store } from "./state/gameplay"
+import { store } from "./state"
 
 export function ScoreHUD(props: GroupProps) {
   const { playerScore, enemyScore } = useStore(store)

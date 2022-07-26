@@ -1,4 +1,4 @@
-import { makeFSM } from "../lib/makeFSM"
+import { makeFSM } from "./lib/makeFSM"
 
 type State = "title" | "gameplay"
 

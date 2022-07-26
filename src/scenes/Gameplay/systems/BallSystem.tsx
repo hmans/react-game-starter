@@ -14,7 +14,7 @@ import {
   increasePlayerScore,
   randomizeBallRotation,
   useGameplayStore
-} from "../state/gameplay"
+} from "../state"
 
 export const BallSystem = () => {
   const { ball, ballDirection, ballSpeed, player, enemy, cameraTarget } =

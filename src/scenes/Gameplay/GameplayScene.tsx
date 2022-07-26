@@ -1,16 +1,11 @@
 import { useLayoutEffect } from "react"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { Keypress } from "../../lib/Keypress"
-import { returnToTitle } from "../../state/macroState"
+import { returnToTitle } from "../../state"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
-import {
-  initializeGameplay,
-  setGameObject,
-  startRound,
-  store
-} from "./state/gameplay"
+import { initializeGameplay, setGameObject, startRound, store } from "./state"
 import { Systems } from "./systems/Systems"
 
 export const GameplayScene = () => {

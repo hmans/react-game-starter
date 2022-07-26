@@ -7,7 +7,7 @@ import { ComponentRenderLogger } from "./lib/ComponentRenderLogger"
 import { PostProcessing } from "./lib/PostProcessing"
 import { GameplayScene } from "./scenes/Gameplay/GameplayScene"
 import { TitleScene } from "./scenes/Title/TitleScene"
-import { MatchState } from "./state/macroState"
+import { MatchState } from "./state"
 
 function App() {
   return (
