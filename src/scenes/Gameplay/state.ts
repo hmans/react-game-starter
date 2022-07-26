@@ -36,6 +36,8 @@ export const setIntensity = (intensity: number) =>
   store.set({ intensity: Math.max(store.state.intensity, intensity) })
 
 export const randomizeBallRotation = () =>
-  store.set({
-    ballRotation: new Vector3().randomDirection().multiplyScalar(between(1, 5))
-  })
+  store.set((state) => ({
+    ballRotation: state.ballRotation
+      .randomDirection()
+      .multiplyScalar(between(1, 5))
+  }))

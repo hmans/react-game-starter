@@ -1107,9 +1107,9 @@ sourcemap-codec@^1.4.8:
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
 statery@^0.6.0-next.0:
-  version "0.6.0-next.0"
-  resolved "https://registry.yarnpkg.com/statery/-/statery-0.6.0-next.0.tgz#687cc678752427aab78e0cf62e1aa7ccd8ed8b63"
-  integrity sha512-/pv5E7VbowqEOORDD/4nXTj4CRxE33pWFxhHZKGzJqoPYAsXe3zaIAWDFTjqHBkErCBjfmxVSk42csY5KY90Zg==
+  version "0.6.0-next.1"
+  resolved "https://registry.yarnpkg.com/statery/-/statery-0.6.0-next.1.tgz#11b97aaa6895fa7b60622e0ae672af435f45b7de"
+  integrity sha512-MzIHxYdw+TxoSMHh5mP3r5Wv8lJsJZmLziA8+qqqacD6RNXSXQbrlb4+BbgqTXu1whBw2X480uVh1VirICOsbg==
 
 stats.js@^0.17.0:
   version "0.17.0"
