@@ -38,7 +38,10 @@ const BallIntroAnimation = (props: GroupProps) => {
   return (
     <Animate
       init={(o) => {
-        gsap.from(o.position, { y: -8, duration: 0.5 })
+        gsap.from(o.position, {
+          y: -8,
+          duration: 0.5
+        })
         gsap.from(o.scale, { x: 0, y: 0, z: 0, duration: 0.5 })
       }}
       {...props}
