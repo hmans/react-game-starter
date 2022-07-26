@@ -14,6 +14,7 @@ export const store = makeStore({
 
   state: "start" as "start" | "playing" | "end",
 
+  ballActive: false,
   ball: null as Object3D | null,
   ballDirection: new Vector2(),
   ballSpeed: 12,
@@ -45,7 +46,8 @@ export const randomizeBallRotation = () =>
 export const initializeGameplay = () => {
   store.set({
     playerScore: 0,
-    enemyScore: 0
+    enemyScore: 0,
+    ballActive: true
   })
 
   randomizeBallRotation()
@@ -57,5 +59,11 @@ export const startRound = () => {
       chance() ? 1 : -1,
       chance() ? 1 : -1
     )
+  })
+}
+
+export const endRound = () => {
+  store.set({
+    ballActive: false
   })
 }

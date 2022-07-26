@@ -6,41 +6,46 @@ import { returnToTitle } from "../../state"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
-import { initializeGameplay, setGameObject, startRound, store } from "./state"
+import {
+  initializeGameplay,
+  setGameObject,
+  startRound,
+  store,
+  useGameplayStore
+} from "./state"
 import { Systems } from "./systems/Systems"
 
-const followBall: AnimationFunction = (dt, object) => {
+const tiltWithBall: AnimationFunction = (dt, object) => {
   /* We can't afford to do this reactively here, will tweak later... */
   const ball = store.state.ball
 
-  if (!ball) return
-  object.rotation.x = ball.position.y / -60
-  object.rotation.y = ball.position.x / 120
+  object.rotation.x = (ball ? ball.position.y : 0) / -60
+  object.rotation.y = (ball ? ball.position.x : 0) / 120
 }
 
-export const GameplayScene = () => (
-  <group>
-    <Keypress code="Escape" onPress={returnToTitle} />
-
-    <Effect callback={initializeGameplay} />
-
+export const Round = () => (
+  <Animate update={tiltWithBall}>
     <Delay seconds={0.75}>
       <Effect callback={startRound} />
     </Delay>
 
-    <Animate update={followBall}>
-      <Court position-z={-0.5} />
+    <Court position-z={-0.5} />
 
-      <ScoreHUD position={[0, 4, 1]} />
+    <ScoreHUD position={[0, 4, 1]} />
 
-      <Player />
-      <Enemy />
-      <Ball />
+    <Player />
+    <Enemy />
+    {useGameplayStore().ballActive && <Ball />}
+  </Animate>
+)
 
-      <CameraTarget />
-    </Animate>
-
+export const GameplayScene = () => (
+  <group>
+    <Keypress code="Escape" onPress={returnToTitle} />
+    <Effect callback={initializeGameplay} />
+    <Round />
     <Systems />
+    <CameraTarget />
   </group>
 )
 
