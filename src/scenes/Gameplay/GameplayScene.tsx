@@ -1,3 +1,5 @@
+import { GroupProps } from "@react-three/fiber"
+import gsap from "gsap"
 import { Euler, Quaternion } from "three"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { Effect } from "../../lib/Effect"
@@ -15,8 +17,6 @@ import {
   store
 } from "./state"
 import { Systems } from "./systems/Systems"
-import gsap from "gsap"
-import { GroupProps } from "@react-three/fiber"
 
 const tmpQuat = new Quaternion()
 const tmpEuler = new Euler()
