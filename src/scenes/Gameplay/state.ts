@@ -1,6 +1,7 @@
+import { between } from "randomish"
 import { Ref } from "react"
 import { makeStore, useStore } from "statery"
-import { Object3D, Vector2 } from "three"
+import { Object3D, Vector2, Vector3 } from "three"
 
 export const store = makeStore({
   playerScore: 0,
@@ -12,7 +13,8 @@ export const store = makeStore({
 
   ball: null as Object3D | null,
   ballDirection: new Vector2(1, 1).normalize(),
-  ballSpeed: 12
+  ballSpeed: 12,
+  ballRotation: new Vector3().randomDirection()
 })
 
 export const useGameplayStore = () => useStore(store)
@@ -32,3 +34,8 @@ export const increaseEnemyScore = () =>
 
 export const setIntensity = (intensity: number) =>
   store.set({ intensity: Math.max(store.state.intensity, intensity) })
+
+export const randomizeBallRotation = () =>
+  store.set({
+    ballRotation: new Vector3().randomDirection().multiplyScalar(between(1, 5))
+  })

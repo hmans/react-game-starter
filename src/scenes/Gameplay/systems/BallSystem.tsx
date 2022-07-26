@@ -10,6 +10,7 @@ import {
 import {
   increaseEnemyScore,
   increasePlayerScore,
+  randomizeBallRotation,
   setIntensity,
   useGameplayStore
 } from "../state"
@@ -55,6 +56,8 @@ export const BallSystem = () => {
 
           /* Bounce the ball */
           ballDirection.x = -ballDirection.x
+
+          randomizeBallRotation()
         }
       }
     }

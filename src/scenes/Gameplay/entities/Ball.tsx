@@ -1,17 +1,19 @@
-import { useEffect, useRef } from "react"
-import { Group } from "three"
+import { Vector3 } from "three"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
 import { ballRadius } from "../configuration"
-import { setGameObject, store } from "../state"
+import { setGameObject, useGameplayStore } from "../state"
 
-const rotate: AnimationFunction = (dt, { rotation }) => {
-  rotation.x += 0.3 * dt
-  rotation.y += 0.7 * dt
-}
+const rotate =
+  (speed: Vector3): AnimationFunction =>
+  (dt, { rotation }) => {
+    rotation.x += speed.x * dt
+    rotation.y += speed.y * dt
+    rotation.z += speed.z * dt
+  }
 
 export const Ball = () => (
   <group ref={setGameObject("ball")}>
-    <Animate update={rotate}>
+    <Animate update={rotate(useGameplayStore().ballRotation)}>
       <mesh>
         <dodecahedronGeometry args={[ballRadius]} />
         <meshStandardMaterial color="white" metalness={0.2} roughness={0.1} />
