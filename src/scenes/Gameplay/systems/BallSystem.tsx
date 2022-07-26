@@ -1,5 +1,12 @@
 import { useFrame } from "@react-three/fiber"
-import { ballRadius, courtHeight, courtWidth } from "../configuration"
+import { AABB, isColliding } from "../../../lib/aabb"
+import {
+  ballRadius,
+  courtHeight,
+  courtWidth,
+  paddleHeight,
+  paddleWidth
+} from "../configuration"
 import {
   increaseEnemyScore,
   increasePlayerScore,
@@ -8,15 +15,48 @@ import {
 } from "../state"
 
 export const BallSystem = () => {
-  const { ball, ballDirection, ballSpeed } = useGameplayStore()
+  const { ball, ballDirection, ballSpeed, player, enemy } = useGameplayStore()
 
   useFrame((_, dt) => {
     if (!ball) return
 
+    /* Move ball */
     {
-      /* Move ball */
       ball.position.x += ballDirection.x * ballSpeed * dt
       ball.position.y += ballDirection.y * ballSpeed * dt
+    }
+
+    /* Collide with paddles */
+    {
+      /* Check paddle collisions */
+      const ballAABB = AABB(
+        ball.position.x - ballRadius / 2,
+        ball.position.y - ballRadius / 2,
+        ballRadius,
+        ballRadius
+      )
+
+      const paddles = [player, enemy]
+      for (const paddle of paddles) {
+        const paddleAABB = AABB(
+          paddle.position.x - paddleWidth / 2,
+          paddle.position.y - paddleHeight / 2,
+          paddleWidth,
+          paddleHeight
+        )
+
+        if (isColliding(ballAABB, paddleAABB)) {
+          /* Move ball outside of paddle */
+          if (ballDirection.x < 0) {
+            ball.position.x = paddleAABB.x + paddleAABB.width + ballRadius / 2
+          } else {
+            ball.position.x = paddleAABB.x - ballRadius / 2
+          }
+
+          /* Bounce the ball */
+          ballDirection.x = -ballDirection.x
+        }
+      }
     }
 
     {
