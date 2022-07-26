@@ -35,6 +35,7 @@ export const Round = () => (
 
     <Player />
     <Enemy />
+
     {useGameplayStore().ballActive && <Ball />}
   </Animate>
 )
