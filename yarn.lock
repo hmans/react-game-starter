@@ -275,20 +275,10 @@
   dependencies:
     "@hmans/signal" "^0.1.8"
 
-"@hmans/react-toolbox@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@hmans/react-toolbox/-/react-toolbox-0.1.4.tgz#295f47976565fcd043ed0bc4078c382e411dc082"
-  integrity sha512-PmhaalZ70hSfIX7AUgWO9gVhKkWH8cbZXxGzmjgJ+46sw6cJUlnawkc/WlIxtUro+TTW61YG1i+18QD0zsvF+Q==
-
 "@hmans/signal@^0.1.8":
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@hmans/signal/-/signal-0.1.8.tgz#46788033db3a24206ff91962aa44097dd274390b"
   integrity sha512-jhTe89A0Fzp0aRcQdB1F9Z1gDqFNFS5kZohbk/EiQqvcVJqfJ5XG0IsSEZiyAT7RuiLXupwbAn7MxXVL+iZZIA==
-
-"@hmans/signal@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@hmans/signal/-/signal-0.2.2.tgz#0b952d2ccd8f873a096dc806468b636c5ca82b95"
-  integrity sha512-4KlR6FiqICOY9J8V483Atk7bfMqoGM/hdYd/6ab+HB+CJfiOBPzY6PtYz3O6bBsNkIZpimnTMSw2AqOz1WDlrA==
 
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
@@ -881,21 +871,6 @@ meshline@^2.0.4:
   resolved "https://registry.yarnpkg.com/meshline/-/meshline-2.0.4.tgz#39c7bcf36b503397642f2312e6211f2a8ecf75c5"
   integrity sha512-Jh6DJl/zLqA4xsKvGv5950jr2ukyXQE1wgxs8u94cImHrvL6soVIggqjP+2hVHZXGYaKnWszhtjuCbKNeQyYiw==
 
-miniplex-react@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/miniplex-react/-/miniplex-react-0.4.1.tgz#cda3ca38c556dd19196a3ee05c57cfb9d8821f38"
-  integrity sha512-J00jvgLapKSZxiYNykGUXViAQBCPmnr2gEMeI0lJhDCliaC/G6T7vnZ4Q/guHFyb0NNUjeLe4ANRTjNHn76o+w==
-  dependencies:
-    "@hmans/react-toolbox" "^0.1.4"
-    react-merge-refs "^1.1.0"
-
-miniplex@^0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/miniplex/-/miniplex-0.10.2.tgz#439f36549e3375a1cc1c09d96ba1fbccc00edd76"
-  integrity sha512-8WQJNpIQLIZfDLB118m2Cn5nypSnXtn/J2SWTz/4c6Q1yxM8Sghoa8aDNCYzTOi12EPpDCwVACqG8mWsmOdjGg==
-  dependencies:
-    "@hmans/signal" "^0.2.2"
-
 mmd-parser@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mmd-parser/-/mmd-parser-1.0.4.tgz#87cc05782cb5974ca854f0303fc5147bc9d690e7"
@@ -1131,10 +1106,10 @@ sourcemap-codec@^1.4.8:
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
-statery@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/statery/-/statery-0.5.4.tgz#a48fcb68e2e99aa769a65c638094ea8ac774fc44"
-  integrity sha512-AqOOGAVqz7kFBeA+EHzrj9rlv7jW3Sy0fqnxz4BImXqslU5cyv6b8ds8FCumGaUDdTWN5tdxmBLhuX+4jrZMzw==
+statery@^0.6.0-next.0:
+  version "0.6.0-next.0"
+  resolved "https://registry.yarnpkg.com/statery/-/statery-0.6.0-next.0.tgz#687cc678752427aab78e0cf62e1aa7ccd8ed8b63"
+  integrity sha512-/pv5E7VbowqEOORDD/4nXTj4CRxE33pWFxhHZKGzJqoPYAsXe3zaIAWDFTjqHBkErCBjfmxVSk42csY5KY90Zg==
 
 stats.js@^0.17.0:
   version "0.17.0"

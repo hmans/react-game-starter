@@ -1,38 +1,21 @@
-import { insideCircle } from "randomish"
-import { Vector2 } from "three"
+import { useEffect, useRef } from "react"
+import { Group } from "three"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
 import { ballRadius } from "../configuration"
-import { ECS } from "../state"
+import { setGameObject, store } from "../state"
 
 const rotate: AnimationFunction = (dt, { rotation }) => {
   rotation.x += 0.3 * dt
   rotation.y += 0.7 * dt
 }
 
-export const Ball = () => {
-  return (
-    <ECS.MemoizedEntity>
-      <ECS.Component name="transform">
-        <group>
-          <Animate update={rotate}>
-            <mesh>
-              <dodecahedronGeometry args={[ballRadius]} />
-              <meshStandardMaterial
-                color="white"
-                metalness={0.2}
-                roughness={0.1}
-              />
-            </mesh>
-          </Animate>
-        </group>
-      </ECS.Component>
-
-      <ECS.Component
-        name="velocity"
-        data={new Vector2(1, 1).normalize().multiplyScalar(15)}
-      />
-
-      <ECS.Component name="ball" data={{}} />
-    </ECS.MemoizedEntity>
-  )
-}
+export const Ball = () => (
+  <group ref={setGameObject("ball")}>
+    <Animate update={rotate}>
+      <mesh>
+        <dodecahedronGeometry args={[ballRadius]} />
+        <meshStandardMaterial color="white" metalness={0.2} roughness={0.1} />
+      </mesh>
+    </Animate>
+  </group>
+)
