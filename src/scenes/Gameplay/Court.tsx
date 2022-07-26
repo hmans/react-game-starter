@@ -17,29 +17,27 @@ import {
 } from "shader-composer"
 import { useShader } from "shader-composer-r3f"
 import { Color, Mesh } from "three"
-import { courtHeight, courtWidth } from "./configuration"
+import { courtHeight, courtWidth, wallColor } from "./configuration"
 import { setGameObject } from "./state"
-
-const COLOR = "hotpink"
 
 const HorizontalWall = forwardRef<Mesh, MeshProps>((props, ref) => (
   <mesh {...props} ref={ref}>
     <boxGeometry args={[courtWidth, 0.1, 0.3]} />
-    <meshStandardMaterial color={COLOR} />
+    <meshStandardMaterial color={wallColor} />
   </mesh>
 ))
 
 const VerticalWall = forwardRef<Mesh, MeshProps>((props, ref) => (
   <mesh {...props} ref={ref}>
     <boxGeometry args={[0.1, courtHeight, 0.3]} />
-    <meshStandardMaterial color={COLOR} />
+    <meshStandardMaterial color={wallColor} />
   </mesh>
 ))
 
 const MiddleLine = () => (
   <mesh position-z={0.001}>
     <planeGeometry args={[0.3, courtHeight]} />
-    <meshStandardMaterial color={COLOR} opacity={0.2} transparent />
+    <meshStandardMaterial color={wallColor} opacity={0.2} transparent />
   </mesh>
 )
 

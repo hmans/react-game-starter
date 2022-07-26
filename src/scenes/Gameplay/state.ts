@@ -3,6 +3,7 @@ import { Ref } from "react"
 import { makeStore, useStore } from "statery"
 import {
   BufferGeometry,
+  Color,
   Mesh,
   MeshStandardMaterial,
   Object3D,
@@ -10,6 +11,8 @@ import {
   Vector3
 } from "three"
 import { makeFSM } from "../../lib/makeFSM"
+import gsap from "gsap"
+import { wallColor } from "./configuration"
 
 const { MatchState, enterState } = makeFSM<"intro" | "playing" | "goal">(
   "intro"
@@ -91,6 +94,11 @@ export const resetRound = () => {
   enterState("intro")
 }
 
-export const wallHitEffect = (wall: "upper" | "lower" | "left" | "right") => {
-  store.state[`${wall}Wall`].material.color.set("white").multiplyScalar(2)
+export const wallHitEffect = (
+  wallName: "upper" | "lower" | "left" | "right"
+) => {
+  const wall = store.state[`${wallName}Wall`]
+
+  wall.material.color.copy(wallColor)
+  gsap.from(wall.material.color, { duration: 0.4, r: 2, g: 2, b: 2 })
 }
