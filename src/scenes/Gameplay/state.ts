@@ -24,7 +24,9 @@ export const store = makeStore({
   ball: null as Object3D | null,
   ballDirection: new Vector2(),
   ballSpeed: 12,
-  ballRotation: new Vector3().randomDirection()
+  ballRotation: new Vector3().randomDirection(),
+
+  enemySlack: 1
 })
 
 export const useGameplayStore = () => useStore(store)
