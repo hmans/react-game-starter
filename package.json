@@ -22,6 +22,7 @@
     "@react-spring/three": "^9.5.2",
     "@react-three/drei": "^9.17.1",
     "@react-three/fiber": "^8.2.0",
+    "gsap": "^3.10.4",
     "postprocessing": "^6.28.4",
     "r3f-perf": "^6.4.2",
     "randomish": "^0.1.4",
