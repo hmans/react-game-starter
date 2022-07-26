@@ -11,7 +11,7 @@ const rotate: AnimationFunction = (dt, { rotation }) => {
 
 export const Ball = () => {
   return (
-    <ECS.Entity>
+    <ECS.MemoizedEntity>
       <ECS.Component name="transform">
         <group>
           <Animate update={rotate}>
@@ -33,6 +33,6 @@ export const Ball = () => {
       />
 
       <ECS.Component name="ball" data={{}} />
-    </ECS.Entity>
+    </ECS.MemoizedEntity>
   )
 }

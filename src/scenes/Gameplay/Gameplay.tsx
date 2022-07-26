@@ -14,14 +14,13 @@ export default function Gameplay() {
   useController(controller)
 
   /* Fetch the first "ball" entity from the ECS. */
-  /* TODO: this needs to subscibe reactively, otherwise it will never pick up the ball */
-  const ball = ECS.world.archetype("ball").entities[0]
+  const ball = ECS.useArchetype("ball").entities[0]
 
   const followBall: AnimationFunction = useCallback(
     (_, { rotation }) => {
       if (!ball) return
-      rotation.x = ball.transform.position.y / -14
-      rotation.y = ball.transform.position.x / 40
+      rotation.x = ball.transform.position.y / -40
+      rotation.y = ball.transform.position.x / 80
     },
     [ball]
   )
