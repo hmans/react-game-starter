@@ -7,7 +7,7 @@ import {
   paddleHeight,
   paddleWidth
 } from "../configuration"
-import { ECS } from "../state"
+import { ECS, increaseEnemyScore, increasePlayerScore } from "../state"
 
 const { entities: balls } = ECS.world.archetype("ball")
 const { entities: paddles } = ECS.world.archetype("paddle")
@@ -60,9 +60,11 @@ export function ballSystem() {
     if (transform.position.x < -horizontalRange) {
       velocity.x *= -1
       transform.position.x = -horizontalRange
+      increaseEnemyScore()
     } else if (transform.position.x > horizontalRange) {
       velocity.x *= -1
       transform.position.x = horizontalRange
+      increasePlayerScore()
     }
   }
 }
