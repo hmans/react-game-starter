@@ -10,12 +10,16 @@ export const makeFSM = <S extends string>(initialState: S) => {
     state,
     children
   }: {
-    state: S
+    state: S | S[]
     children?: ReactNode
   }) => {
     const { state: currentState } = useStore(store)
 
-    return state === currentState ? <>{children}</> : null
+    const isCurrentState = Array.isArray(state)
+      ? state.includes(currentState)
+      : state === currentState
+
+    return isCurrentState ? <>{children}</> : null
   }
 
   const enterState = (state: S) => {

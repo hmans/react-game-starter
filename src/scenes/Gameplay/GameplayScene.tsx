@@ -8,6 +8,8 @@ import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import {
   initializeGameplay,
+  MatchState,
+  resetRound,
   setGameObject,
   startRound,
   store,
@@ -25,18 +27,26 @@ const tiltWithBall: AnimationFunction = (dt, object) => {
 
 export const Round = () => (
   <Animate update={tiltWithBall}>
-    <Delay seconds={0.75}>
-      <Effect callback={startRound} />
-    </Delay>
-
     <Court position-z={-0.5} />
-
     <ScoreHUD position={[0, 4, 1]} />
-
     <Player />
     <Enemy />
 
-    {useGameplayStore().ballActive && <Ball />}
+    <MatchState state="intro">
+      <Delay seconds={0.75}>
+        <Effect callback={startRound} />
+      </Delay>
+    </MatchState>
+
+    <MatchState state={["intro", "playing"]}>
+      <Ball />
+    </MatchState>
+
+    <MatchState state="goal">
+      <Delay seconds={1}>
+        <Effect callback={resetRound} />
+      </Delay>
+    </MatchState>
   </Animate>
 )
 

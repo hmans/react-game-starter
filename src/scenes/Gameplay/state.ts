@@ -2,6 +2,13 @@ import { between, chance } from "randomish"
 import { Ref } from "react"
 import { makeStore, useStore } from "statery"
 import { Object3D, Vector2, Vector3 } from "three"
+import { makeFSM } from "../../lib/makeFSM"
+
+const { MatchState, enterState } = makeFSM<"intro" | "playing" | "goal">(
+  "intro"
+)
+
+export { MatchState }
 
 export const store = makeStore({
   playerScore: 0,
@@ -14,7 +21,6 @@ export const store = makeStore({
 
   state: "start" as "start" | "playing" | "end",
 
-  ballActive: false,
   ball: null as Object3D | null,
   ballDirection: new Vector2(),
   ballSpeed: 12,
@@ -46,24 +52,24 @@ export const randomizeBallRotation = () =>
 export const initializeGameplay = () => {
   store.set({
     playerScore: 0,
-    enemyScore: 0,
-    ballActive: true
+    enemyScore: 0
   })
 
   randomizeBallRotation()
 }
 
 export const startRound = () => {
-  store.set({
-    ballDirection: store.state.ballDirection.set(
-      chance() ? 1 : -1,
-      chance() ? 1 : -1
-    )
-  })
+  store.state.ballDirection.set(chance() ? 1 : -1, chance() ? 1 : -1)
+
+  enterState("playing")
 }
 
 export const endRound = () => {
-  store.set({
-    ballActive: false
-  })
+  enterState("goal")
+}
+
+export const resetRound = () => {
+  store.state.ballDirection.set(0, 0)
+
+  enterState("intro")
 }
