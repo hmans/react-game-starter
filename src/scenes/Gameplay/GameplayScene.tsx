@@ -3,6 +3,7 @@ import { Animate, AnimationFunction } from "../../lib/Animate"
 import { Keypress } from "../../lib/Keypress"
 import { returnToTitle } from "../../state"
 import Court from "./Court"
+import { Effect } from "../../lib/Effect"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import { initializeGameplay, setGameObject, startRound, store } from "./state"
@@ -18,14 +19,11 @@ export const GameplayScene = () => {
     object.rotation.y = ball.position.x / 120
   }
 
-  useLayoutEffect(() => {
-    initializeGameplay()
-    startRound()
-  }, [])
-
   return (
     <group>
       <Keypress code="Escape" onPress={returnToTitle} />
+      <Effect callback={initializeGameplay} />
+      <Effect callback={startRound} />
 
       <Animate update={followBall}>
         <Court position-z={-0.5} />
