@@ -1,4 +1,5 @@
 import { useFrame } from "@react-three/fiber"
+import { plusMinus } from "randomish"
 import { AABB, isColliding } from "../../../lib/aabb"
 import {
   ballRadius,
@@ -18,7 +19,7 @@ import {
 export const BallSystem = () => {
   const { ball, ballDirection, ballSpeed, player, enemy } = useGameplayStore()
 
-  useFrame((_, dt) => {
+  useFrame(({ camera }, dt) => {
     if (!ball) return
 
     /* Move ball */
@@ -54,6 +55,8 @@ export const BallSystem = () => {
             ball.position.x = paddleAABB.x - ballRadius / 2
           }
 
+          camera.lookAt(Math.sign(ballDirection.x) * 0.5, plusMinus(0.3), 0)
+
           /* Bounce the ball */
           ballDirection.x = -ballDirection.x
 
@@ -66,13 +69,15 @@ export const BallSystem = () => {
       const verticalRange = courtHeight / 2 - ballRadius
       const horizontalRange = courtWidth / 2 - ballRadius
 
-      /* Collision with upper bounds - just bounce off the wall */
+      /* Collision with upper or lower bounds - just bounce off the wall */
       if (ball.position.y < -verticalRange) {
         ballDirection.y *= -1
         ball.position.y = -verticalRange
+        camera.lookAt(0, -0.2, 0)
       } else if (ball.position.y > verticalRange) {
         ballDirection.y *= -1
         ball.position.y = verticalRange
+        camera.lookAt(0, 0.2, 0)
       }
 
       /* Horizontal collision with wall -- score! */
@@ -80,12 +85,12 @@ export const BallSystem = () => {
         ballDirection.x *= -1
         ball.position.x = -horizontalRange
         increaseEnemyScore()
-        setIntensity(1)
+        camera.lookAt(-0.2, 0, 0)
       } else if (ball.position.x > horizontalRange) {
         ballDirection.x *= -1
         ball.position.x = horizontalRange
         increasePlayerScore()
-        setIntensity(1)
+        camera.lookAt(-0.2, 0, 0)
       }
     }
   })
