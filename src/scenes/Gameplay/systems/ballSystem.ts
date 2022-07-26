@@ -1,16 +1,51 @@
-import { Box2 } from "three"
-import { ballRadius, courtHeight, courtWidth } from "../configuration"
+import { Box2, Vector2, Vector3 } from "three"
+import { AABB, isColliding } from "../../../lib/aabb"
+import {
+  ballRadius,
+  courtHeight,
+  courtWidth,
+  paddleHeight,
+  paddleWidth
+} from "../configuration"
 import { ECS } from "../state"
 
 const { entities: balls } = ECS.world.archetype("ball")
 const { entities: paddles } = ECS.world.archetype("paddle")
 
-const tmpBox2 = new Box2()
-
 export function ballSystem() {
   for (const { transform, velocity } of balls) {
     const verticalRange = courtHeight / 2 - ballRadius
     const horizontalRange = courtWidth / 2 - ballRadius
+
+    /* Check paddle collisions */
+    const ballAABB = AABB(
+      transform.position.x - ballRadius / 2,
+      transform.position.y - ballRadius / 2,
+      ballRadius,
+      ballRadius
+    )
+
+    for (const { transform: paddleTransform, paddle } of paddles) {
+      const paddleAABB = AABB(
+        paddleTransform.position.x - paddleWidth / 2,
+        paddleTransform.position.y - paddleHeight / 2,
+        paddleWidth,
+        paddleHeight
+      )
+
+      if (isColliding(ballAABB, paddleAABB)) {
+        /* Move ball outside of paddle */
+        if (velocity.x < 0) {
+          transform.position.x =
+            paddleAABB.x + paddleAABB.width + ballRadius / 2
+        } else {
+          transform.position.x = paddleAABB.x - ballRadius / 2
+        }
+
+        /* Bounce the ball */
+        velocity.x = -velocity.x
+      }
+    }
 
     /* Collision with upper bounds - just bounce off the wall */
     if (transform.position.y < -verticalRange) {
@@ -29,27 +64,5 @@ export function ballSystem() {
       velocity.x *= -1
       transform.position.x = horizontalRange
     }
-
-    /* Check paddle collisions */
-    // for (const paddle of paddles) {
-    //   const paddleBox = new Box2(
-    //     new Vector2(
-    //       paddle.transform.position.x - paddleWidth / 2,
-    //       paddle.transform.position.y - paddleHeight / 2
-    //     ),
-    //     new Vector2(
-    //       paddle.transform.position.x + paddleWidth / 2,
-    //       paddle.transform.position.y + paddleHeight / 2
-    //     )
-    //   )
-
-    //   if (ballAABB.intersectsBox(paddleBox)) {
-    //     velocity.x < 0
-    //       ? (transform.position.x = paddleBox.max.x + ballRadius)
-    //       : (transform.position.x = paddleBox.min.x - ballRadius)
-
-    //     velocity.x *= -1
-    //   }
-    // }
   }
 }
