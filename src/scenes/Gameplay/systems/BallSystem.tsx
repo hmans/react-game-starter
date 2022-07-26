@@ -1,13 +1,13 @@
 import { useFrame } from "@react-three/fiber"
-import { ballRadius, courtHeight, courtWidth } from "./configuration"
+import { ballRadius, courtHeight, courtWidth } from "../configuration"
 import {
   increaseEnemyScore,
   increasePlayerScore,
   setIntensity,
   useGameplayStore
-} from "./state"
+} from "../state"
 
-export const MainLoop = () => {
+export const BallSystem = () => {
   const { ball, ballDirection, ballSpeed } = useGameplayStore()
 
   useFrame((_, dt) => {

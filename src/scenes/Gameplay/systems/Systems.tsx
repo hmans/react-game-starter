@@ -1,12 +1,7 @@
-import { useFrame } from "@react-three/fiber"
+import { BallSystem } from "./BallSystem"
 
-export const Systems = () => {
-  useFrame((_, dt) => {
-    // playerControlSystem()
-    // movementSystem(dt)
-    // ballSystem()
-    // paddleSystem()
-  })
-
-  return null
-}
+export const Systems = () => (
+  <>
+    <BallSystem />
+  </>
+)

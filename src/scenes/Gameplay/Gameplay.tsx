@@ -4,8 +4,8 @@ import { useController } from "../../lib/useController"
 import Background from "./Background"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
-import { MainLoop } from "./MainLoop"
 import { ScoreHUD } from "./ScoreHUD"
+import { Systems } from "./systems/Systems"
 
 export default function Gameplay() {
   /* Initialize and update game input */
@@ -26,7 +26,7 @@ export default function Gameplay() {
         <Ball />
       </Animate>
 
-      <MainLoop />
+      <Systems />
     </group>
   )
 }
