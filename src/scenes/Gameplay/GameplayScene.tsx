@@ -27,11 +27,11 @@ const tiltWithBall: AnimationFunction = (dt, object) => {
 
   const target = tmpQuat.setFromEuler(
     ball
-      ? tmpEuler.set(ball.position.y / -60, ball.position.x / 120, 0)
+      ? tmpEuler.set(ball.position.y / -30, ball.position.x / 60, 0)
       : tmpEuler.set(0, 0, 0)
   )
 
-  object.quaternion.slerp(target, 0.1)
+  object.quaternion.slerp(target, 0.07)
 }
 
 const BallIntroAnimation = (props: GroupProps) => {
