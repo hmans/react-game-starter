@@ -6,6 +6,9 @@ export const makeFSM = <S extends string>(initialState: S) => {
     state: initialState as S
   })
 
+  const matchesState = (state: S, other: S | S[]) =>
+    Array.isArray(other) ? other.includes(state) : state === other
+
   const MatchState = ({
     state,
     children
@@ -15,11 +18,7 @@ export const makeFSM = <S extends string>(initialState: S) => {
   }) => {
     const { state: currentState } = useStore(store)
 
-    const isCurrentState = Array.isArray(state)
-      ? state.includes(currentState)
-      : state === currentState
-
-    return isCurrentState ? <>{children}</> : null
+    return matchesState(currentState, state) ? <>{children}</> : null
   }
 
   const enterState = (state: S) => {
@@ -31,9 +30,7 @@ export const makeFSM = <S extends string>(initialState: S) => {
   }
 
   const isCurrentState = (state: S | S[]) =>
-    Array.isArray(state)
-      ? state.includes(store.state.state)
-      : store.state.state === state
+    matchesState(store.state.state, state)
 
   return {
     MatchState,
