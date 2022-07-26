@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@hmans/controlfreak": "^0.2.0",
-    "@react-spring/three": "^9.5.2",
     "@react-three/drei": "^9.17.1",
     "@react-three/fiber": "^8.2.0",
     "gsap": "^3.10.4",
