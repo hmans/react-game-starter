@@ -29,10 +29,7 @@ export const Ball = () => {
 
       <ECS.Component
         name="velocity"
-        data={new Vector2()
-          .copy(insideCircle() as Vector2)
-          .normalize()
-          .multiplyScalar(15)}
+        data={new Vector2(1, 1).normalize().multiplyScalar(15)}
       />
 
       <ECS.Component name="ball" data={{}} />
