@@ -12,7 +12,6 @@ import {
   increaseEnemyScore,
   increasePlayerScore,
   randomizeBallRotation,
-  setIntensity,
   useGameplayStore
 } from "../state"
 

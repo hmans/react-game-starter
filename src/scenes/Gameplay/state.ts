@@ -6,7 +6,6 @@ import { Object3D, Vector2, Vector3 } from "three"
 export const store = makeStore({
   playerScore: 0,
   enemyScore: 0,
-  intensity: 0,
 
   player: null as Object3D | null,
   enemy: null as Object3D | null,
@@ -31,9 +30,6 @@ export const increasePlayerScore = () =>
 
 export const increaseEnemyScore = () =>
   store.set(({ enemyScore }) => ({ enemyScore: enemyScore + 1 }))
-
-export const setIntensity = (intensity: number) =>
-  store.set({ intensity: Math.max(store.state.intensity, intensity) })
 
 export const randomizeBallRotation = () =>
   store.set((state) => ({
