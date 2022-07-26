@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber"
-import { courtHeight, ballRadius, courtWidth } from "./configuration"
+import { ballRadius, courtHeight, courtWidth } from "./configuration"
 import {
   increaseEnemyScore,
   increasePlayerScore,
