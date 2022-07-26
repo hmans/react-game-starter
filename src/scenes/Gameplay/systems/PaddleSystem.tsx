@@ -1,15 +1,17 @@
 import { useFrame } from "@react-three/fiber"
-import { useGameplayStore } from "../state"
 import { controller } from "../../../input/controller"
 import { courtHeight, paddleHeight, paddleSpeed } from "../configuration"
+import { useGameplayStore } from "../state"
 
 export const PaddleSystem = () => {
   const { player, enemy } = useGameplayStore()
 
   useFrame((_, dt) => {
+    if (!player || !enemy) return
+
     /* Move player */
     {
-      if (player && controller) {
+      if (controller) {
         const move = controller.controls.move.value
         player.position.y += move.y * dt * paddleSpeed
       }
