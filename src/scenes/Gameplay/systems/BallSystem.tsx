@@ -14,7 +14,8 @@ import {
   increaseEnemyScore,
   increasePlayerScore,
   randomizeBallRotation,
-  useGameplayStore
+  useGameplayStore,
+  wallHitEffect
 } from "../state"
 
 export const BallSystem = () => {
@@ -78,17 +79,22 @@ export const BallSystem = () => {
         ballDirection.y *= -1
         ball.position.y = -verticalRange
         cameraTarget.position.y -= wallShake
+        wallHitEffect("lower")
       } else if (ball.position.y > verticalRange) {
         ballDirection.y *= -1
         ball.position.y = verticalRange
         cameraTarget.position.y += wallShake
+        wallHitEffect("upper")
       }
 
       /* Horizontal collision with wall -- score! */
       if (ball.position.x < -horizontalRange) {
+        wallHitEffect("left")
         increaseEnemyScore()
         endRound()
       } else if (ball.position.x > horizontalRange) {
+        wallHitEffect("right")
+
         increasePlayerScore()
         endRound()
       }

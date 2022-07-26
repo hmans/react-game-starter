@@ -1,7 +1,14 @@
 import { between, chance } from "randomish"
 import { Ref } from "react"
 import { makeStore, useStore } from "statery"
-import { Object3D, Vector2, Vector3 } from "three"
+import {
+  BufferGeometry,
+  Mesh,
+  MeshStandardMaterial,
+  Object3D,
+  Vector2,
+  Vector3
+} from "three"
 import { makeFSM } from "../../lib/makeFSM"
 
 const { MatchState, enterState } = makeFSM<"intro" | "playing" | "goal">(
@@ -25,6 +32,11 @@ export const store = makeStore({
   ballDirection: new Vector2(),
   ballSpeed: 12,
   ballRotation: new Vector3().randomDirection(),
+
+  upperWall: null as Mesh<BufferGeometry, MeshStandardMaterial> | null,
+  lowerWall: null as Mesh<BufferGeometry, MeshStandardMaterial> | null,
+  leftWall: null as Mesh<BufferGeometry, MeshStandardMaterial> | null,
+  rightWall: null as Mesh<BufferGeometry, MeshStandardMaterial> | null,
 
   enemySlack: 1
 })
@@ -77,4 +89,8 @@ export const resetRound = () => {
   store.state.ballDirection.set(0, 0)
 
   enterState("intro")
+}
+
+export const wallHitEffect = (wall: "upper" | "lower" | "left" | "right") => {
+  store.state[`${wall}Wall`].material.color.set("white").multiplyScalar(2)
 }
