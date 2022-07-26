@@ -2,9 +2,11 @@ import { useFrame } from "@react-three/fiber"
 import { useGameplayStore } from "./state"
 
 export const MainLoop = () => {
-  const { ballDirection, ball, ballSpeed, player, enemy } = useGameplayStore()
-  const store = useGameplayStore()
-  console.log("MainLoop", store.ball)
+  const ball = useGameplayStore().ball
+  const ballDirection = useGameplayStore().ballDirection
+  const ballSpeed = useGameplayStore().ballSpeed
+
+  console.log("MainLoop", ball)
 
   useFrame((_, dt) => {
     if (!ball) return
