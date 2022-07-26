@@ -50,7 +50,7 @@ export const GameplayScene = () => (
 
     <Animate update={tiltWithBall}>
       <Court position-z={-0.5} />
-      <ScoreHUD position={[0, 4, 1]} />
+      <ScoreHUD position={[0, 3.5, 1]} />
       <Player />
       <Enemy />
 
