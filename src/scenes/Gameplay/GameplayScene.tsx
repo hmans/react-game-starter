@@ -8,6 +8,7 @@ import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import {
+  enterState,
   initializeGameplay,
   MatchState,
   resetRound,
@@ -36,7 +37,6 @@ const tiltWithBall: AnimationFunction = (dt, object) => {
 export const GameplayScene = () => (
   <group>
     <Keypress code="Escape" onPress={returnToTitle} />
-    <Effect callback={initializeGameplay} />
 
     <Animate update={tiltWithBall}>
       <Court position-z={-0.5} />

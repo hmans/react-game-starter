@@ -8,7 +8,7 @@ const { MatchState, enterState } = makeFSM<"intro" | "playing" | "goal">(
   "intro"
 )
 
-export { MatchState }
+export { MatchState, enterState }
 
 export const store = makeStore({
   playerScore: 0,
@@ -42,6 +42,12 @@ export const increasePlayerScore = () =>
 export const increaseEnemyScore = () =>
   store.set(({ enemyScore }) => ({ enemyScore: enemyScore + 1 }))
 
+export const resetScores = () =>
+  store.set({
+    playerScore: 0,
+    enemyScore: 0
+  })
+
 export const randomizeBallRotation = () =>
   store.set((state) => ({
     ballRotation: state.ballRotation
@@ -50,12 +56,9 @@ export const randomizeBallRotation = () =>
   }))
 
 export const initializeGameplay = () => {
-  store.set({
-    playerScore: 0,
-    enemyScore: 0
-  })
-
+  resetScores()
   randomizeBallRotation()
+  enterState("intro")
 }
 
 export const startPlaying = () => {
