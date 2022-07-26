@@ -11,7 +11,7 @@ import { useShader } from "shader-composer-r3f"
 import { Simplex3DNoise } from "shader-composer-toybox"
 import { Color } from "three"
 
-const Background = () => {
+export const Background = () => {
   const shader = useShader(() => {
     return ShaderMaterialMaster({
       color: pipe(
@@ -34,5 +34,3 @@ const Background = () => {
     </mesh>
   )
 }
-
-export default Background

@@ -1,7 +1,7 @@
 import { Vector3 } from "three"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
 import { ballRadius } from "../configuration"
-import { setGameObject, useGameplayStore } from "../state"
+import { setGameObject, useGameplayStore } from "../state/gameplay"
 
 const rotate =
   (speed: Vector3): AnimationFunction =>

@@ -1,4 +1,4 @@
-import { between } from "randomish"
+import { between, chance } from "randomish"
 import { Ref } from "react"
 import { makeStore, useStore } from "statery"
 import { Object3D, Vector2, Vector3 } from "three"
@@ -12,8 +12,10 @@ export const store = makeStore({
 
   cameraTarget: null as Object3D | null,
 
+  state: "start" as "start" | "playing" | "end",
+
   ball: null as Object3D | null,
-  ballDirection: new Vector2(1, 1).normalize(),
+  ballDirection: new Vector2(),
   ballSpeed: 12,
   ballRotation: new Vector3().randomDirection()
 })
@@ -39,3 +41,21 @@ export const randomizeBallRotation = () =>
       .randomDirection()
       .multiplyScalar(between(1, 5))
   }))
+
+export const initializeGameplay = () => {
+  store.set({
+    playerScore: 0,
+    enemyScore: 0
+  })
+
+  randomizeBallRotation()
+}
+
+export const startRound = () => {
+  store.set({
+    ballDirection: store.state.ballDirection.set(
+      chance() ? 1 : -1,
+      chance() ? 1 : -1
+    )
+  })
+}

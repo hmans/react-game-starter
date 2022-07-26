@@ -1,9 +1,13 @@
 import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
+import { Background } from "./Background"
+import { Controller } from "./Controller"
 import { Camera } from "./lib/camera-composer"
 import { ComponentRenderLogger } from "./lib/ComponentRenderLogger"
 import { PostProcessing } from "./lib/PostProcessing"
-import { Gameplay } from "./scenes/Gameplay"
+import { GameplayScene } from "./scenes/Gameplay/GameplayScene"
+import { TitleScene } from "./scenes/Title/TitleScene"
+import { MatchState } from "./state/macroState"
 
 function App() {
   return (
@@ -13,9 +17,18 @@ function App() {
         <Environment preset="sunset" />
         <Camera />
         <PostProcessing />
+        <Controller />
         {/* <PerformanceMonitor /> */}
 
-        <Gameplay />
+        <Background />
+
+        <MatchState state="title">
+          <TitleScene />
+        </MatchState>
+
+        <MatchState state="gameplay">
+          <GameplayScene />
+        </MatchState>
       </Canvas>
     </ComponentRenderLogger>
   )

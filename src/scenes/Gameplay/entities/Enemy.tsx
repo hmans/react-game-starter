@@ -1,5 +1,5 @@
 import { courtWidth, enemyColor, paddleWidth } from "../configuration"
-import { setGameObject } from "../state"
+import { setGameObject } from "../state/gameplay"
 import { Paddle } from "./Paddle"
 
 export const Enemy = () => (

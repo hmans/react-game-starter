@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber"
 import { Quaternion, Vector3 } from "three"
-import { useGameplayStore } from "../state"
+import { useGameplayStore } from "../state/gameplay"
 
 const center = new Vector3()
 const currentQuat = new Quaternion()
