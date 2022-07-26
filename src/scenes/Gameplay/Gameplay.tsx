@@ -3,7 +3,6 @@ import { controller } from "../../input/controller"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { useController } from "../../lib/useController"
 import Background from "./Background"
-import { CameraShake } from "./CameraShake"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
@@ -29,7 +28,6 @@ export default function Gameplay() {
   return (
     <group>
       <Background />
-      <CameraShake />
 
       <Animate update={followBall}>
         <Court position-z={-0.5} />
