@@ -10,6 +10,8 @@ export const CameraSystem = () => {
   const { cameraTarget } = useGameplayStore()
 
   useFrame(({ camera }, dt) => {
+    if (!cameraTarget) return
+
     /* Move camera target back to screen center */
     cameraTarget.position.lerp(center, 0.1)
 
