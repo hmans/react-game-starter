@@ -17,6 +17,7 @@ import {
   useGameplayStore,
   wallHitEffect
 } from "../state"
+import gsap from "gsap"
 
 export const BallSystem = () => {
   const { ball, ballDirection, ballSpeed, player, enemy, cameraTarget } =
@@ -57,6 +58,17 @@ export const BallSystem = () => {
           } else {
             ball.position.x = paddleAABB.x - ballRadius / 2
           }
+
+          /* Animate the paddle */
+          const dy = ball.position.y - paddle.position.y
+          gsap.from(paddle.rotation, {
+            duration: 0.5,
+            z: -Math.sign(ball.position.x) * Math.sign(dy) * 0.2
+          })
+          gsap.from(paddle.position, {
+            duration: 0.3,
+            x: paddle.position.x + 0.8 * Math.sign(ball.position.x)
+          })
 
           /* Shake camera */
           cameraTarget.position.x += ballDirection.x * paddleShake
