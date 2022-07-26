@@ -1,4 +1,3 @@
-import { Box2, Vector2, Vector3 } from "three"
 import { AABB, isColliding } from "../../../lib/aabb"
 import {
   ballRadius,
