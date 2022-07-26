@@ -1,5 +1,7 @@
 import { useLayoutEffect } from "react"
 import { Animate, AnimationFunction } from "../../lib/Animate"
+import { Keypress } from "../../lib/Keypress"
+import { returnToTitle } from "../../state/macroState"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
@@ -28,6 +30,8 @@ export const GameplayScene = () => {
 
   return (
     <group>
+      <Keypress code="Escape" onPress={returnToTitle} />
+
       <Animate update={followBall}>
         <Court position-z={-0.5} />
 

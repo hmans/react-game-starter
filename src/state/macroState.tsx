@@ -8,3 +8,6 @@ export { MatchState }
 
 export const enterGameplay = () =>
   isCurrentState("title") && enterState("gameplay")
+
+export const returnToTitle = () =>
+  isCurrentState("gameplay") && enterState("title")
