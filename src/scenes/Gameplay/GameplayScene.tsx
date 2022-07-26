@@ -11,9 +11,8 @@ import {
   MatchState,
   resetRound,
   setGameObject,
-  startRound,
-  store,
-  useGameplayStore
+  startPlaying,
+  store
 } from "./state"
 import { Systems } from "./systems/Systems"
 
@@ -25,36 +24,34 @@ const tiltWithBall: AnimationFunction = (dt, object) => {
   object.rotation.y = (ball ? ball.position.x : 0) / 120
 }
 
-export const Round = () => (
-  <Animate update={tiltWithBall}>
-    <Court position-z={-0.5} />
-    <ScoreHUD position={[0, 4, 1]} />
-    <Player />
-    <Enemy />
-
-    <MatchState state="intro">
-      <Delay seconds={0.75}>
-        <Effect callback={startRound} />
-      </Delay>
-    </MatchState>
-
-    <MatchState state={["intro", "playing"]}>
-      <Ball />
-    </MatchState>
-
-    <MatchState state="goal">
-      <Delay seconds={1}>
-        <Effect callback={resetRound} />
-      </Delay>
-    </MatchState>
-  </Animate>
-)
-
 export const GameplayScene = () => (
   <group>
     <Keypress code="Escape" onPress={returnToTitle} />
     <Effect callback={initializeGameplay} />
-    <Round />
+
+    <Animate update={tiltWithBall}>
+      <Court position-z={-0.5} />
+      <ScoreHUD position={[0, 4, 1]} />
+      <Player />
+      <Enemy />
+
+      <MatchState state="intro">
+        <Delay seconds={0.75}>
+          <Effect callback={startPlaying} />
+        </Delay>
+      </MatchState>
+
+      <MatchState state={["intro", "playing"]}>
+        <Ball />
+      </MatchState>
+
+      <MatchState state="goal">
+        <Delay seconds={1}>
+          <Effect callback={resetRound} />
+        </Delay>
+      </MatchState>
+    </Animate>
+
     <Systems />
     <CameraTarget />
   </group>

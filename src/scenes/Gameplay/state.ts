@@ -58,7 +58,7 @@ export const initializeGameplay = () => {
   randomizeBallRotation()
 }
 
-export const startRound = () => {
+export const startPlaying = () => {
   store.state.ballDirection.set(chance() ? 1 : -1, chance() ? 1 : -1)
 
   enterState("playing")
