@@ -18,7 +18,8 @@ export const ECS = createECS<Entity>()
 
 export const store = makeStore({
   playerScore: 0,
-  enemyScore: 0
+  enemyScore: 0,
+  intensity: 0
 })
 
 export const increasePlayerScore = () =>
@@ -26,3 +27,6 @@ export const increasePlayerScore = () =>
 
 export const increaseEnemyScore = () =>
   store.set(({ enemyScore }) => ({ enemyScore: enemyScore + 1 }))
+
+export const setIntensity = (intensity: number) =>
+  store.set({ intensity: Math.max(store.state.intensity, intensity) })
