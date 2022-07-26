@@ -1,28 +1,21 @@
 import { GroupProps, MeshProps } from "@react-three/fiber"
-import { ColorDepthEffect } from "postprocessing"
 import { forwardRef } from "react"
 import {
-  ShaderMaterialMaster,
-  pipe,
-  VertexPosition,
-  Mul,
-  Round,
   Add,
-  Time,
   Fract,
-  SplitVector3,
+  Mul,
+  ShaderMaterialMaster,
   Smoothstep,
-  Sub,
-  vec3,
-  Sin,
-  Cos,
-  Value,
   SplitVector2,
+  SplitVector3,
+  Sub,
+  Time,
+  Value,
   vec2,
-  Clamp01
+  vec3,
+  VertexPosition
 } from "shader-composer"
 import { useShader } from "shader-composer-r3f"
-import { Simplex3DNoise } from "shader-composer-toybox"
 import { Color, Mesh } from "three"
 import { courtHeight, courtWidth } from "./configuration"
 import { setGameObject } from "./state"
