@@ -1,3 +1,4 @@
+import { Euler, Quaternion } from "three"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { Effect } from "../../lib/Effect"
 import { Keypress } from "../../lib/Keypress"
@@ -16,12 +17,20 @@ import {
 } from "./state"
 import { Systems } from "./systems/Systems"
 
+const tmpQuat = new Quaternion()
+const tmpEuler = new Euler()
+
 const tiltWithBall: AnimationFunction = (dt, object) => {
   /* We can't afford to do this reactively here, will tweak later... */
   const ball = store.state.ball
 
-  object.rotation.x = (ball ? ball.position.y : 0) / -60
-  object.rotation.y = (ball ? ball.position.x : 0) / 120
+  const target = tmpQuat.setFromEuler(
+    ball
+      ? tmpEuler.set(ball.position.y / -60, ball.position.x / 120, 0)
+      : tmpEuler.set(0, 0, 0)
+  )
+
+  object.quaternion.slerp(target, 0.1)
 }
 
 export const GameplayScene = () => (
