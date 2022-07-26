@@ -11,5 +11,6 @@ export const enemyColor = "hsl(200, 100%, 60%)"
 
 export const paddleWidth = 0.5
 export const paddleHeight = 2.25
+export const paddleSpeed = 12
 
 export const ballRadius = 0.35
