@@ -1,6 +1,6 @@
-import { Environment, PerspectiveCamera } from "@react-three/drei"
+import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import { Camera } from "./Camera"
+import { Camera } from "./lib/camera-composer"
 import { PostProcessing } from "./lib/PostProcessing"
 import { Gameplay } from "./scenes/Gameplay"
 
