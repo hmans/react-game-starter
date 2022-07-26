@@ -18,12 +18,12 @@ export const setGameObject =
   (object) =>
     store.set({ [name]: object })
 
-export const GameObject = ({
-  name,
-  ...props
-}: { name: keyof typeof store.state } & GroupProps) => (
-  <group ref={setGameObject(name)} {...props} />
-)
+// export const GameObject = ({
+//   name,
+//   ...props
+// }: { name: keyof typeof store.state } & GroupProps) => (
+//   <group ref={setGameObject(name)} {...props} />
+// )
 
 export const increasePlayerScore = () =>
   store.set(({ playerScore }) => ({ playerScore: playerScore + 1 }))
