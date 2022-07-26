@@ -63,9 +63,11 @@ export const GameplayScene = () => (
       </MatchState>
 
       <MatchState state={["intro", "playing"]}>
-        <BallIntroAnimation>
-          <Ball />
-        </BallIntroAnimation>
+        <group ref={setGameObject("ball")}>
+          <BallIntroAnimation>
+            <Ball />
+          </BallIntroAnimation>
+        </group>
       </MatchState>
 
       <MatchState state="goal">
