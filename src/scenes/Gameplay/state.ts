@@ -75,6 +75,10 @@ export const randomizeBallRotation = () =>
 export const initializeGameplay = () => {
   resetScores()
   randomizeBallRotation()
+  startIntro()
+}
+
+export const startIntro = () => {
   enterState("intro")
 }
 
@@ -90,8 +94,7 @@ export const endRound = () => {
 
 export const resetRound = () => {
   store.state.ballDirection.set(0, 0)
-
-  enterState("intro")
+  startIntro()
 }
 
 export const wallHitEffect = (
