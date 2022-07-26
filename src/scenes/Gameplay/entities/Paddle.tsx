@@ -1,7 +1,6 @@
 import { ReactNode } from "react"
 import { ColorRepresentation } from "three"
 import { paddleHeight, paddleWidth } from "../configuration"
-import { ECS } from "../state"
 
 export type PaddleProps = {
   children?: ReactNode

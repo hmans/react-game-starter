@@ -1,10 +1,9 @@
-import { useCallback } from "react"
 import { controller } from "../../input/controller"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { useController } from "../../lib/useController"
 import Background from "./Background"
 import Court from "./Court"
-import { Ball, Enemy, Player } from "./entities"
+import { Ball } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import { Systems } from "./systems/Systems"
 
@@ -24,7 +23,7 @@ export default function Gameplay() {
 
         {/* <Player /> */}
         {/* <Enemy /> */}
-        {/* <Ball /> */}
+        <Ball />
       </Animate>
 
       <Systems />
