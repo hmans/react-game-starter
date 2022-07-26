@@ -5,13 +5,21 @@ import Background from "./Background"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
+import { useGameplayStore } from "./state"
 import { Systems } from "./systems/Systems"
 
 export default function Gameplay() {
   /* Initialize and update game input */
   useController(controller)
 
-  const followBall: AnimationFunction = () => {}
+  const { ball } = useGameplayStore()
+
+  const followBall: AnimationFunction = (dt, object) => {
+    if (!ball) return
+
+    object.rotation.x = ball.position.y / -60
+    object.rotation.y = ball.position.x / 120
+  }
 
   return (
     <group>
