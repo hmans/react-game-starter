@@ -15,7 +15,11 @@ import {
   Sub,
   vec3,
   Sin,
-  Cos
+  Cos,
+  Value,
+  SplitVector2,
+  vec2,
+  Clamp01
 } from "shader-composer"
 import { useShader } from "shader-composer-r3f"
 import { Simplex3DNoise } from "shader-composer-toybox"
@@ -46,18 +50,29 @@ const MiddleLine = () => (
   </mesh>
 )
 
+const Grid2D = (
+  v: Value<"vec2">,
+  scale: Value<"float"> = 1,
+  thickness: Value<"float"> = 0.1
+) => {
+  const [x, y] = SplitVector2(Mul(v, scale))
+
+  const fx = Fract(x)
+  const fy = Fract(y)
+
+  const sx = Smoothstep(0, thickness, fx)
+  const sy = Smoothstep(0, thickness, fy)
+
+  return Mul(sx, sy)
+}
+
 const Background = () => {
   const shader = useShader(() => {
     const time = Time()
     const position = Add(VertexPosition, vec3(Mul(time, 2), time, 0))
+
     const [x, y, z] = SplitVector3(position)
-    const fx = Fract(x)
-    const fy = Fract(y)
-
-    const sx = Smoothstep(0, 0.05, fx)
-    const sy = Smoothstep(0, 0.05, fy)
-
-    const a = Mul(sx, sy)
+    const a = Grid2D(vec2(x, y), 1, 0.02)
 
     return ShaderMaterialMaster({
       color: new Color("hotpink"),
