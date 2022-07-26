@@ -68,10 +68,10 @@ export const useGameplayStore = () => useStore(store)
 
 export const setGameObject =
   <O extends Object3D>(name: keyof typeof store.state): Ref<O> =>
-  (object) => {
-    console.log("Setting game object", name, object)
-    store.set({ [name]: object })
-  }
+  (object) =>
+    queueMicrotask(() => {
+      store.set({ [name]: object })
+    })
 
 export const increasePlayerScore = () =>
   store.set(({ playerScore }) => ({ playerScore: playerScore + 1 }))
