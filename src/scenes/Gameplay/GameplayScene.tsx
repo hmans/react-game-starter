@@ -2,6 +2,7 @@ import { Euler, Quaternion } from "three"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { Effect } from "../../lib/Effect"
 import { Keypress } from "../../lib/Keypress"
+import { SpringOnAppear } from "../../lib/SpringOnAppear"
 import { Delay } from "../../lib/timeline-composer"
 import { returnToTitle } from "../../state"
 import Court from "./Court"
@@ -51,7 +52,9 @@ export const GameplayScene = () => (
       </MatchState>
 
       <MatchState state={["intro", "playing"]}>
-        <Ball />
+        <SpringOnAppear>
+          <Ball />
+        </SpringOnAppear>
       </MatchState>
 
       <MatchState state="goal">
