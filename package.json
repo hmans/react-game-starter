@@ -21,8 +21,6 @@
     "@hmans/controlfreak": "^0.2.0",
     "@react-three/drei": "^9.17.1",
     "@react-three/fiber": "^8.2.0",
-    "miniplex": "^0.10.2",
-    "miniplex-react": "^0.4.1",
     "postprocessing": "^6.28.4",
     "r3f-perf": "^6.4.2",
     "randomish": "^0.1.4",

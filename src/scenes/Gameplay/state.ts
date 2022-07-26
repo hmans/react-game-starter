@@ -1,25 +1,14 @@
-import { Controller } from "@hmans/controlfreak"
-import { createECS } from "miniplex-react"
 import { makeStore } from "statery"
-import { Object3D, Vector2 } from "three"
-
-type Entity = {
-  controller?: Controller
-  paddle?: {
-    speed: number
-  }
-  ball?: {}
-
-  transform?: Object3D
-  velocity?: Vector2
-}
-
-export const ECS = createECS<Entity>()
+import { Object3D } from "three"
 
 export const store = makeStore({
   playerScore: 0,
   enemyScore: 0,
-  intensity: 0
+  intensity: 0,
+
+  player: Object3D,
+  enemy: Object3D,
+  ball: Object3D
 })
 
 export const increasePlayerScore = () =>
