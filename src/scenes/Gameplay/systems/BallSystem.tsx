@@ -64,11 +64,11 @@ export const BallSystem = () => {
           const dy = ball.position.y - paddle.position.y
           gsap.from(paddle.rotation, {
             duration: 0.5,
-            z: -Math.sign(ball.position.x) * Math.sign(dy) * 0.2
+            z: -Math.sign(ball.position.x) * Math.sign(dy) * 0.1
           })
           gsap.from(paddle.position, {
             duration: 0.3,
-            x: paddle.position.x + 0.8 * Math.sign(ball.position.x)
+            x: paddle.position.x + 0.3 * Math.sign(ball.position.x)
           })
 
           /* Shake camera */
