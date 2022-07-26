@@ -58,7 +58,7 @@ export const BallSystem = () => {
 
           /* Shake camera */
           cameraTarget.position.x += ballDirection.x * paddleShake
-          cameraTarget.position.y += ballDirection.y * paddleShake
+          cameraTarget.position.y -= ballDirection.y * paddleShake
 
           /* Bounce the ball */
           ballDirection.x = -ballDirection.x
