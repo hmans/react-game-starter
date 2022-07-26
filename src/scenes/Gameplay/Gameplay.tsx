@@ -5,7 +5,7 @@ import Background from "./Background"
 import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
-import { useGameplayStore } from "./state"
+import { setGameObject, useGameplayStore } from "./state"
 import { Systems } from "./systems/Systems"
 
 export default function Gameplay() {
@@ -32,9 +32,22 @@ export default function Gameplay() {
         <Player />
         <Enemy />
         <Ball />
+
+        <CameraTarget />
       </Animate>
 
       <Systems />
     </group>
   )
 }
+
+const CameraTarget = ({ debug = false }) => (
+  <group ref={setGameObject("cameraTarget")}>
+    {debug && (
+      <mesh>
+        <planeGeometry />
+        <meshStandardMaterial color="yellow" />
+      </mesh>
+    )}
+  </group>
+)

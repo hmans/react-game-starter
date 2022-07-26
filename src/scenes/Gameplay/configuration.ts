@@ -14,3 +14,6 @@ export const paddleHeight = 2.25
 export const paddleSpeed = 12
 
 export const ballRadius = 0.35
+
+export const wallShake = 1.2
+export const paddleShake = 2.5

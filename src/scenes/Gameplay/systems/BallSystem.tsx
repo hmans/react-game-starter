@@ -1,12 +1,13 @@
 import { useFrame } from "@react-three/fiber"
-import { plusMinus } from "randomish"
 import { AABB, isColliding } from "../../../lib/aabb"
 import {
   ballRadius,
   courtHeight,
   courtWidth,
   paddleHeight,
-  paddleWidth
+  paddleShake,
+  paddleWidth,
+  wallShake
 } from "../configuration"
 import {
   increaseEnemyScore,
@@ -16,7 +17,8 @@ import {
 } from "../state"
 
 export const BallSystem = () => {
-  const { ball, ballDirection, ballSpeed, player, enemy } = useGameplayStore()
+  const { ball, ballDirection, ballSpeed, player, enemy, cameraTarget } =
+    useGameplayStore()
 
   useFrame(({ camera }, dt) => {
     if (!ball) return
@@ -54,7 +56,9 @@ export const BallSystem = () => {
             ball.position.x = paddleAABB.x - ballRadius / 2
           }
 
-          camera.lookAt(Math.sign(ballDirection.x) * 0.5, plusMinus(0.3), 0)
+          /* Shake camera */
+          cameraTarget.position.x += ballDirection.x * paddleShake
+          cameraTarget.position.y += ballDirection.y * paddleShake
 
           /* Bounce the ball */
           ballDirection.x = -ballDirection.x
@@ -72,11 +76,11 @@ export const BallSystem = () => {
       if (ball.position.y < -verticalRange) {
         ballDirection.y *= -1
         ball.position.y = -verticalRange
-        camera.lookAt(0, -0.2, 0)
+        cameraTarget.position.y -= wallShake
       } else if (ball.position.y > verticalRange) {
         ballDirection.y *= -1
         ball.position.y = verticalRange
-        camera.lookAt(0, 0.2, 0)
+        cameraTarget.position.y += wallShake
       }
 
       /* Horizontal collision with wall -- score! */
@@ -84,12 +88,12 @@ export const BallSystem = () => {
         ballDirection.x *= -1
         ball.position.x = -horizontalRange
         increaseEnemyScore()
-        camera.lookAt(-0.2, 0, 0)
+        cameraTarget.position.x -= wallShake
       } else if (ball.position.x > horizontalRange) {
         ballDirection.x *= -1
         ball.position.x = horizontalRange
         increasePlayerScore()
-        camera.lookAt(-0.2, 0, 0)
+        cameraTarget.position.x += wallShake
       }
     }
   })

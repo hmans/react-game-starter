@@ -10,6 +10,8 @@ export const store = makeStore({
   player: null as Object3D | null,
   enemy: null as Object3D | null,
 
+  cameraTarget: null as Object3D | null,
+
   ball: null as Object3D | null,
   ballDirection: new Vector2(1, 1).normalize(),
   ballSpeed: 12,
