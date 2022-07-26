@@ -86,18 +86,11 @@ export const BallSystem = () => {
 
       /* Horizontal collision with wall -- score! */
       if (ball.position.x < -horizontalRange) {
-        ballDirection.x *= -1
-        ball.position.x = -horizontalRange
         increaseEnemyScore()
         endRound()
-        cameraTarget.position.x -= wallShake
       } else if (ball.position.x > horizontalRange) {
-        ballDirection.x *= -1
-        ball.position.x = horizontalRange
         increasePlayerScore()
         endRound()
-
-        cameraTarget.position.x += wallShake
       }
     }
   })
