@@ -3,7 +3,7 @@ import { Animate, AnimationFunction } from "../../lib/Animate"
 import { useController } from "../../lib/useController"
 import Background from "./Background"
 import Court from "./Court"
-import { Ball } from "./entities"
+import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import { Systems } from "./systems/Systems"
 
@@ -21,8 +21,8 @@ export default function Gameplay() {
         <Court position-z={-0.5} />
         <ScoreHUD position={[0, 4, 1]} />
 
-        {/* <Player /> */}
-        {/* <Enemy /> */}
+        <Player />
+        <Enemy />
         <Ball />
       </Animate>
 

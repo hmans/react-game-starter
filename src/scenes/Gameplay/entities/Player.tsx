@@ -1,9 +1,9 @@
-import { controller } from "../../../input/controller"
-import { playerColor } from "../configuration"
+import { courtWidth, paddleWidth, playerColor } from "../configuration"
+import { GameObject } from "../state"
 import { Paddle } from "./Paddle"
 
 export const Player = () => (
-  <Paddle position={-8} color={playerColor}>
-    <ECS.Component name="controller" data={controller} />
-  </Paddle>
+  <GameObject name="player" position-x={-(courtWidth / 2 - paddleWidth - 0.5)}>
+    <Paddle color={playerColor} />
+  </GameObject>
 )

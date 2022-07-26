@@ -1,3 +1,5 @@
+import { GroupProps } from "@react-three/fiber"
+import { Ref } from "react"
 import { makeStore } from "statery"
 import { Object3D } from "three"
 
@@ -6,10 +8,22 @@ export const store = makeStore({
   enemyScore: 0,
   intensity: 0,
 
-  player: Object3D,
-  enemy: Object3D,
-  ball: Object3D
+  player: null as Object3D | null,
+  enemy: null as Object3D | null,
+  ball: null as Object3D | null
 })
+
+export const setGameObject =
+  <O extends Object3D>(name: keyof typeof store.state): Ref<O> =>
+  (object) =>
+    store.set({ [name]: object })
+
+export const GameObject = ({
+  name,
+  ...props
+}: { name: keyof typeof store.state } & GroupProps) => (
+  <group ref={setGameObject(name)} {...props} />
+)
 
 export const increasePlayerScore = () =>
   store.set(({ playerScore }) => ({ playerScore: playerScore + 1 }))
