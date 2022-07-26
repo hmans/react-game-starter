@@ -70,6 +70,12 @@ export const BallSystem = () => {
             duration: 0.3,
             x: paddle.position.x + 0.3 * Math.sign(ball.position.x)
           })
+          gsap.from(paddle.scale, {
+            duration: 0.3,
+            x: 1.4,
+            y: 1.4,
+            z: 1.4
+          })
 
           /* Shake camera */
           cameraTarget.position.x += ballDirection.x * paddleShake
