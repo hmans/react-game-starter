@@ -1,3 +1,5 @@
+import { animated, useSpring } from "@react-spring/three"
+import { GroupProps } from "@react-three/fiber"
 import { Euler, Quaternion } from "three"
 import { Animate, AnimationFunction } from "../../lib/Animate"
 import { Effect } from "../../lib/Effect"
@@ -9,8 +11,6 @@ import Court from "./Court"
 import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import {
-  enterState,
-  initializeGameplay,
   MatchState,
   resetRound,
   setGameObject,
@@ -35,6 +35,15 @@ const tiltWithBall: AnimationFunction = (dt, object) => {
   object.quaternion.slerp(target, 0.1)
 }
 
+const MoveUp = (props: GroupProps) => {
+  const spring = useSpring({
+    from: { y: -8 },
+    to: { y: 0 }
+  })
+
+  return <animated.group {...props} position-y={spring.y} />
+}
+
 export const GameplayScene = () => (
   <group>
     <Keypress code="Escape" onPress={returnToTitle} />
@@ -52,9 +61,11 @@ export const GameplayScene = () => (
       </MatchState>
 
       <MatchState state={["intro", "playing"]}>
-        <SpringOnAppear>
-          <Ball />
-        </SpringOnAppear>
+        <MoveUp>
+          <SpringOnAppear>
+            <Ball />
+          </SpringOnAppear>
+        </MoveUp>
       </MatchState>
 
       <MatchState state="goal">
