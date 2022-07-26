@@ -21,7 +21,7 @@ export const Animate: FC<{
   }, [])
 
   useFrame((state, dt) => {
-    update(dt, ref.current!, state)
+    update?.(dt, ref.current!, state)
   })
 
   return <group ref={ref}>{children}</group>

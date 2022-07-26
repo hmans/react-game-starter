@@ -15,6 +15,8 @@ import {
   store
 } from "./state"
 import { Systems } from "./systems/Systems"
+import gsap from "gsap"
+import { GroupProps } from "@react-three/fiber"
 
 const tmpQuat = new Quaternion()
 const tmpEuler = new Euler()
@@ -30,6 +32,18 @@ const tiltWithBall: AnimationFunction = (dt, object) => {
   )
 
   object.quaternion.slerp(target, 0.1)
+}
+
+const BallIntroAnimation = (props: GroupProps) => {
+  return (
+    <Animate
+      init={(o) => {
+        gsap.from(o.position, { y: -8, duration: 0.5 })
+        gsap.from(o.scale, { x: 0, y: 0, z: 0, duration: 0.5 })
+      }}
+      {...props}
+    />
+  )
 }
 
 export const GameplayScene = () => (
@@ -49,7 +63,9 @@ export const GameplayScene = () => (
       </MatchState>
 
       <MatchState state={["intro", "playing"]}>
-        <Ball />
+        <BallIntroAnimation>
+          <Ball />
+        </BallIntroAnimation>
       </MatchState>
 
       <MatchState state="goal">
