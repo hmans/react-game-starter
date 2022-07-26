@@ -18,6 +18,7 @@ import {
   wallHitEffect
 } from "../state"
 import gsap from "gsap"
+import { Color, Mesh, MeshStandardMaterial } from "three"
 
 export const BallSystem = () => {
   const { ball, ballDirection, ballSpeed, player, enemy, cameraTarget } =
@@ -101,12 +102,13 @@ export const BallSystem = () => {
 
       /* Horizontal collision with wall -- score! */
       if (ball.position.x < -horizontalRange) {
+        cameraTarget.position.x -= wallShake
         wallHitEffect("left")
         increaseEnemyScore()
         endRound()
       } else if (ball.position.x > horizontalRange) {
+        cameraTarget.position.x += wallShake
         wallHitEffect("right")
-
         increasePlayerScore()
         endRound()
       }
