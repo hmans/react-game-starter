@@ -23,7 +23,7 @@ yarn install
 yarn dev
 ```
 
-### A Note of the Project Structure
+### A Note on the Project Structure
 
 At some point in the future, this README will contain a more detailed tour through the project, but at the moment, things are still too much in flux. Most importantly, you should be aware that the `src/lib/` folder is currently a huge
 grab-bag of _stuff_ that should (and in many cases will) be extracted into new and existing libraries.
