@@ -10,7 +10,7 @@
 - To provide a solid starting template for React- and Three.js-powered games;
 - To act as a sanity check for the libraries used;
 - To prove that React game development is a thing (and one of beauty!);
-- To document and demonstrate a sane and scalable project structure.
+- To surface good patterns and a sane and scalable project structure.
 
 ### Getting Started
 
@@ -23,12 +23,10 @@ yarn install
 yarn dev
 ```
 
-### Roadmap
+### A Note of the Project Structure
 
-- [x] Bootstrap a new Vite/R3F/etc. app
-- [ ] A simple Miniplex setup that steers entities and effects
-- [ ] Input through Controlfreak (and later Input Composer)
-- [ ] A simple high-level structure driven by State Composer
-- [ ] VFX driven by VFX Composer
-- [ ] Some shader effects driven by Shader Composer
-- [ ] Sound effects and music
+At some point in the future, this README will contain a more detailed tour through the project, but at the moment, things are still too much in flux. Most importantly, you should be aware that the `src/lib/` folder is currently a huge
+grab-bag of _stuff_ that should (and in many cases will) be extracted into new and existing libraries.
+
+If you're interested in learning more about my work around React game development, please check out my [blog](https://hmans.co/) or
+[follow me on twitter](https://twitter.com/hmans).
