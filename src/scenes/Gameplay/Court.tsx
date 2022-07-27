@@ -2,12 +2,16 @@ import { GroupProps, MeshProps } from "@react-three/fiber"
 import { forwardRef } from "react"
 import {
   Add,
+  Float,
   Fract,
+  Mix,
   Mul,
+  pipe,
   ShaderMaterialMaster,
   Smoothstep,
   SplitVector2,
   SplitVector3,
+  Step,
   Sub,
   Time,
   Value,
@@ -41,6 +45,8 @@ const MiddleLine = () => (
   </mesh>
 )
 
+const OneMinus = (v: Value<"float">) => Float(Sub(1, v), { name: "OneMinus" })
+
 const Grid2D = (
   v: Value<"vec2">,
   scale: Value<"float"> = 1,
@@ -51,10 +57,14 @@ const Grid2D = (
   const fx = Fract(x)
   const fy = Fract(y)
 
-  const sx = Smoothstep(0, thickness, fx)
-  const sy = Smoothstep(0, thickness, fy)
+  const sx = Step(thickness, fx)
+  const sy = Step(thickness, fy)
 
-  return Mul(sx, sy)
+  return pipe(
+    Mul(sx, sy),
+    (v) => OneMinus(v),
+    (v) => Float(v, { name: "Grid2D" })
+  )
 }
 
 const Background = () => {
@@ -63,11 +73,11 @@ const Background = () => {
     const position = Add(VertexPosition, vec3(Mul(time, 2), time, 0))
 
     const [x, y, z] = SplitVector3(position)
-    const a = Grid2D(vec2(x, y), 1, 0.02)
+    const a = Grid2D(vec2(x, y), 1, 0.035)
 
     return ShaderMaterialMaster({
       color: new Color("hotpink"),
-      alpha: Sub(0.52, Mul(a, 0.5))
+      alpha: Add(0.03, Mul(a, 0.4))
     })
   }, [])
 
