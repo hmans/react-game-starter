@@ -30,7 +30,7 @@ export const BallTrail = makeParticles()
 export const BallTrailEffect = () => {
   return (
     <BallTrail.Root>
-      <planeGeometry args={[0.05, 0.05]} />
+      <planeGeometry args={[0.06, 0.06]} />
 
       <VFXMaterial
         baseMaterial={MeshStandardMaterial}
@@ -40,7 +40,6 @@ export const BallTrailEffect = () => {
       >
         <VFX.Billboard />
         <VFX.Velocity velocity={variables.velocity} time={ParticleAge} />
-        {/* <VFX.Acceleration force={new Vector3(0, -10, 0)} time={ParticleAge} /> */}
         <VFX.SetAlpha alpha={OneMinus(ParticleProgress)} />
         <VFX.Module module={lifetimeModule} />
       </VFXMaterial>
