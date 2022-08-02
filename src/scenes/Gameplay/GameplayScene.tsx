@@ -17,6 +17,7 @@ import {
   store
 } from "./state"
 import { Systems } from "./systems/Systems"
+import { BallImpactEffect } from "./vfx/BallImpact"
 import { BallTrailEffect } from "./vfx/BallTrail"
 
 const tmpQuat = new Quaternion()
@@ -58,6 +59,7 @@ export const GameplayScene = () => (
       <Enemy />
 
       <BallTrailEffect />
+      <BallImpactEffect />
 
       <MatchState state="intro">
         <Delay seconds={0.75}>

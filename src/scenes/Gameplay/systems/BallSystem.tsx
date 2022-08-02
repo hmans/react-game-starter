@@ -19,6 +19,7 @@ import {
 } from "../state"
 import gsap from "gsap"
 import { Color, Mesh, MeshStandardMaterial } from "three"
+import { ballImpact } from "../vfx/BallImpact"
 
 export const BallSystem = () => {
   const { ball, ballDirection, ballSpeed, player, enemy, cameraTarget } =
@@ -99,22 +100,26 @@ export const BallSystem = () => {
         ball.position.y = -verticalRange
         cameraTarget.position.y -= wallShake
         wallHitEffect("lower")
+        ballImpact(ball.position)
       } else if (ball.position.y > verticalRange) {
         ballDirection.y *= -1
         ball.position.y = verticalRange
         cameraTarget.position.y += wallShake
         wallHitEffect("upper")
+        ballImpact(ball.position)
       }
 
       /* Horizontal collision with wall -- score! */
       if (ball.position.x < -horizontalRange) {
         cameraTarget.position.x -= wallShake
         wallHitEffect("left")
+        ballImpact(ball.position)
         increaseEnemyScore()
         endRound()
       } else if (ball.position.x > horizontalRange) {
         cameraTarget.position.x += wallShake
         wallHitEffect("right")
+        ballImpact(ball.position)
         increasePlayerScore()
         endRound()
       }
