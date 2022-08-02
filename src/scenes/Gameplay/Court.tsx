@@ -2,24 +2,17 @@ import { GroupProps, MeshProps } from "@react-three/fiber"
 import { forwardRef } from "react"
 import {
   Add,
-  Float,
-  Fract,
-  Mix,
   Mul,
   pipe,
   ShaderMaterialMaster,
-  Smoothstep,
-  SplitVector2,
   SplitVector3,
-  Step,
-  Sub,
   Time,
-  Value,
   vec2,
   vec3,
   VertexPosition
 } from "shader-composer"
 import { useShader } from "shader-composer-r3f"
+import { Grid2D } from "shader-composer-toybox"
 import { Color, Mesh } from "three"
 import { courtHeight, courtWidth, wallColor } from "./configuration"
 import { setGameObject } from "./state"
@@ -45,35 +38,15 @@ const MiddleLine = () => (
   </mesh>
 )
 
-const OneMinus = (v: Value<"float">) => Float(Sub(1, v), { name: "OneMinus" })
-
-const Grid2D = (
-  v: Value<"vec2">,
-  scale: Value<"float"> = 1,
-  thickness: Value<"float"> = 0.1
-) => {
-  const [x, y] = SplitVector2(Mul(v, scale))
-
-  const fx = Fract(x)
-  const fy = Fract(y)
-
-  const sx = Step(thickness, fx)
-  const sy = Step(thickness, fy)
-
-  return pipe(
-    Mul(sx, sy),
-    (v) => OneMinus(v),
-    (v) => Float(v, { name: "Grid2D" })
-  )
-}
-
 const Background = () => {
   const shader = useShader(() => {
-    const time = Time()
-    const position = Add(VertexPosition, vec3(Mul(time, 2), time, 0))
-
-    const [x, y, z] = SplitVector3(position)
-    const a = Grid2D(vec2(x, y), 1, 0.035)
+    const a = pipe(
+      Time(),
+      (v) => vec3(Mul(v, 2), v, 0),
+      (v) => Add(VertexPosition, v),
+      (v) => SplitVector3(v),
+      ([x, y]) => Grid2D(vec2(x, y), 1, 0.035)
+    )
 
     return ShaderMaterialMaster({
       color: new Color("hotpink"),
@@ -85,7 +58,6 @@ const Background = () => {
     <mesh>
       <planeGeometry args={[courtWidth, courtHeight]} />
       <shaderMaterial {...shader} transparent key={Math.random()} />
-      {/* <meshStandardMaterial color={COLOR} opacity={0.015} transparent /> */}
     </mesh>
   )
 }
