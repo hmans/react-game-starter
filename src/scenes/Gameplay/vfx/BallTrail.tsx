@@ -30,7 +30,7 @@ export const BallTrail = makeParticles()
 export const BallTrailEffect = () => {
   return (
     <BallTrail.Root>
-      <planeGeometry args={[0.06, 0.06]} />
+      <planeGeometry args={[0.1, 0.1]} />
 
       <VFXMaterial
         baseMaterial={MeshStandardMaterial}
