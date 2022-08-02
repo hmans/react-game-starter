@@ -5,6 +5,7 @@ import {
   ReactNode,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef
 } from "react"
 import { Group, Object3D } from "three"
@@ -25,7 +26,7 @@ export const Animate = forwardRef<Group, AnimateProps>(
   ({ children, update, init }, ref) => {
     const group = useRef<Group>(null!)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (!group.current) return
       init?.(group.current)
     }, [])
