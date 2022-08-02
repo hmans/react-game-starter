@@ -1,4 +1,5 @@
 import { Vector3 } from "three"
+import { Delay } from "timeline-composer"
 import { Animate, AnimationFunction } from "../../../lib/Animate"
 import { ballRadius } from "../configuration"
 import { useGameplayStore } from "../state"
