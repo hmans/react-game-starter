@@ -7,7 +7,13 @@ import { Keypress } from "../../lib/Keypress"
 import { Delay } from "../../lib/timeline-composer"
 import { returnToTitle } from "../../state"
 import Court from "./Court"
-import { Ball, Enemy, Player } from "./entities"
+import {
+  Ball,
+  BallTrailEffect,
+  BallTrailEmitter,
+  Enemy,
+  Player
+} from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import {
   MatchState,
@@ -63,6 +69,7 @@ export const GameplayScene = () => (
       </MatchState>
 
       <MatchState state={["intro", "playing"]}>
+        <BallTrailEffect />
         <group ref={setGameObject("ball")}>
           <BallIntroAnimation>
             <Ball />

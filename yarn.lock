@@ -1240,6 +1240,15 @@ utility-types@^3.10.0:
   resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
   integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
+vfx-composer@^0.2.0-next.2:
+  version "0.2.0-next.2"
+  resolved "https://registry.yarnpkg.com/vfx-composer/-/vfx-composer-0.2.0-next.2.tgz#ef35a5016b7757cdf06590494fa0d42216c7719b"
+  integrity sha512-QrBvHkhLqDEZ+lvW2V2Rp5SseGf5Qf33fpw1HWUKozLlqyQJbjSHqBBoFVyuOqojhh4J37tsmHt5tAe8mqmksA==
+  dependencies:
+    shader-composer "^0.1.8"
+    shader-composer-r3f "^0.1.0"
+    three-custom-shader-material "^4.0.0"
+
 vite@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.4.tgz#c61688d6b97573e96cf5ac25f2d68597b5ce68e8"
