@@ -7,13 +7,7 @@ import { Keypress } from "../../lib/Keypress"
 import { Delay } from "../../lib/timeline-composer"
 import { returnToTitle } from "../../state"
 import Court from "./Court"
-import {
-  Ball,
-  BallTrailEffect,
-  BallTrailEmitter,
-  Enemy,
-  Player
-} from "./entities"
+import { Ball, Enemy, Player } from "./entities"
 import { ScoreHUD } from "./ScoreHUD"
 import {
   MatchState,
@@ -23,6 +17,7 @@ import {
   store
 } from "./state"
 import { Systems } from "./systems/Systems"
+import { BallTrailEffect } from "./vfx/BallTrail"
 
 const tmpQuat = new Quaternion()
 const tmpEuler = new Euler()
@@ -62,6 +57,8 @@ export const GameplayScene = () => (
       <Player />
       <Enemy />
 
+      <BallTrailEffect />
+
       <MatchState state="intro">
         <Delay seconds={0.75}>
           <Effect callback={startPlaying} />
@@ -69,7 +66,6 @@ export const GameplayScene = () => (
       </MatchState>
 
       <MatchState state={["intro", "playing"]}>
-        <BallTrailEffect />
         <group ref={setGameObject("ball")}>
           <BallIntroAnimation>
             <Ball />
