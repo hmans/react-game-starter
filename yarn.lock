@@ -371,10 +371,10 @@
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.5.2.tgz#cce1b03afbafb23edfb9cd8c517cc7462abffb65"
   integrity sha512-n/wBRSHPqTmEd4BFWY6TeR1o/UY+3ujoqMxLjqy90CcY/ozJzDRuREL3c+pxMeTF2+B7dX33dTPCtFMX51nbxg==
 
-"@react-three/drei@^9.17.1":
-  version "9.17.3"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.17.3.tgz#66690d107ba044612f87fefef497bac0c65c7c24"
-  integrity sha512-c30mEvFdh9I311UelJeCqKRIcDcV1D9KfgYSK9Tn7/IiSUH7ytQQYw/LyB6FXCVBWq/i2qAcDvJ79scPBZ+WUQ==
+"@react-three/drei@^9.19.2":
+  version "9.19.2"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.19.2.tgz#abb6f62ac783ac093493a85e204ce7ee5352d7e1"
+  integrity sha512-JW1QzJjIgQIMHlKQF/QcQ2IWXpNdtUPo0jJs7WDBYuGmRsFfWM/uflcsZRYXhOsvOtCtZRMt7RaiabPZtG5hnA==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@react-spring/three" "^9.3.1"
@@ -389,7 +389,7 @@
     stats.js "^0.17.0"
     suspend-react "^0.0.8"
     three-mesh-bvh "^0.5.10"
-    three-stdlib "^2.10.2"
+    three-stdlib "^2.13.0"
     troika-three-text "^0.46.4"
     utility-types "^3.10.0"
     zustand "^3.5.13"
@@ -1083,20 +1083,20 @@ semver@^6.3.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
-shader-composer-r3f@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/shader-composer-r3f/-/shader-composer-r3f-0.0.5.tgz#46d99a264f14f6017dcfeedc3f40fb89909ad1f3"
-  integrity sha512-IJSLfjQEefYlu4WvoekEGYAdVEsF1TCEI5Qtc4P8sMyQjLCBw+y9XGlelr80qiWy/3PJxD3GpUu4BN+riGeeZA==
+shader-composer-r3f@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/shader-composer-r3f/-/shader-composer-r3f-0.1.0.tgz#afa80480eb52a57b59fbccb03599ae0230cdc39e"
+  integrity sha512-BeSKgo+pviTTrZ4Cc549LcDDEW/nWMaTSjdtsUSAzRUnFgcsi77Vj18ZZqV+qxLNTQo/fJlv+30ymj3DvmBLDA==
 
-shader-composer-toybox@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/shader-composer-toybox/-/shader-composer-toybox-0.0.7.tgz#627c6b7c59b4930248df12e549f41026fab09585"
-  integrity sha512-F0Xq32Uz3RqpKOoMCIfd3U0lZ2Bx8clt4koYMiE6QRCxRchbJfEcVL2F4/k85b7PdOeQCPEJ9i4vuRdKM84EGA==
+shader-composer-toybox@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/shader-composer-toybox/-/shader-composer-toybox-0.0.8.tgz#de6bfdfd0970339a3f6ffb0f39be3d7808bb206c"
+  integrity sha512-LPczukpmQIQkQoZ0ApIBWknZODwnGOArGIJEj2kinGIqgQGskR4lXf4mBAGx13hVoKAfoJ4Bv+FtG8hKQcNF5Q==
 
-shader-composer@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/shader-composer/-/shader-composer-0.0.9.tgz#f5034d7831b2f64bb323f6473cfddf05edbc4a8b"
-  integrity sha512-S6NAbl26ym4oEglwCepG8GTZufiN60w6E7JieQPWnB+lEWy1pTYj5u3nL4m2fbaR/NgTdVHihjtww8XPIbIcNg==
+shader-composer@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/shader-composer/-/shader-composer-0.1.8.tgz#293410240f3a33c72a44d916726b659ae2f4a922"
+  integrity sha512-UzsUfr4zmt498wG6FswdVU3vcKF6ZkSkmjVZ7eOgeiqggQJzBLNnym7veQ7XujWhupKAfGIv597w6npnzKGl+Q==
   dependencies:
     crypto-js "^4.1.1"
     fp-ts "^2.12.1"
@@ -1148,10 +1148,10 @@ suspend-react@^0.0.8:
   resolved "https://registry.yarnpkg.com/suspend-react/-/suspend-react-0.0.8.tgz#b0740c1386b4eb652f17affe4339915ee268bd31"
   integrity sha512-ZC3r8Hu1y0dIThzsGw0RLZplnX9yXwfItcvaIzJc2VQVi8TGyGDlu92syMB5ulybfvGLHAI5Ghzlk23UBPF8xg==
 
-three-custom-shader-material@^3.4.4:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/three-custom-shader-material/-/three-custom-shader-material-3.5.0.tgz#8361df69b1b42cf0db078b217566b908c856de82"
-  integrity sha512-DiwBjwDPBsM8S5/diqd+CNkjomgNKpTwueycWyG7SeW0yLH7I/BQKZrnSQ7h3RGCEUM12JUePXE+94e4ykAsWA==
+three-custom-shader-material@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/three-custom-shader-material/-/three-custom-shader-material-4.0.0.tgz#d4f1abab7199caf110c0a94aa0df8f3cccb8a1f5"
+  integrity sha512-oMlHSANeKJdpXiLnQTQILF0tY6p2q6tgzQiR5UzMtC9oCa+EQgMXh28dvzsnqtWVnnv6FGwXRfNFgqcv+mHW7Q==
   dependencies:
     glsl-token-functions "^1.0.1"
     glsl-token-string "^1.0.1"
@@ -1163,10 +1163,10 @@ three-mesh-bvh@^0.5.10:
   resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.5.14.tgz#605654cf802b3e92ea7b18997535960d04344159"
   integrity sha512-rSk7SpKDR47m1PmkUxt5na5+dM4h0KW5zF43lMniZGjT4hQn9Om+g64ooFreFIWlQlrNN8pFqiPnDMRZS58/Yw==
 
-three-stdlib@^2.10.2:
-  version "2.12.1"
-  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.12.1.tgz#b63de05cf7f7803e630a7c0c5887e85ae06178ca"
-  integrity sha512-G3SSsCOBiWa0sjjPt+K28ikQ84Plm/ZVUozMfWagK59kZqBWcaPVXpOThkAgvdBpm2zCWLW3edAoW/4XIbljVQ==
+three-stdlib@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.13.0.tgz#48baf2f85a781437e42cd53f672ea44ccce4a801"
+  integrity sha512-hFTTX6K6y8jrDREtzx1nl029rcOYJ5R8YBWg7M3s7uhcAx0fhs4d8tS+dj82vPksLDlMW8Pu/x0CVTRrqiUFDQ==
   dependencies:
     "@babel/runtime" "^7.16.7"
     "@webgpu/glslang" "^0.0.15"
@@ -1240,10 +1240,10 @@ utility-types@^3.10.0:
   resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
   integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
-vite@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.3.tgz#c7b2ed9505a36a04be1d5d23aea4ea6fc028043f"
-  integrity sha512-sDIpIcl3mv1NUaSzZwiXGEy1ZoWwwC2vkxUHY6yiDacR6zf//ZFuBJrozO62gedpE43pmxnLATNR5IYUdAEkMQ==
+vite@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.4.tgz#c61688d6b97573e96cf5ac25f2d68597b5ce68e8"
+  integrity sha512-NU304nqnBeOx2MkQnskBQxVsa0pRAH5FphokTGmyy8M3oxbvw7qAXts2GORxs+h/2vKsD+osMhZ7An6yK6F1dA==
   dependencies:
     esbuild "^0.14.47"
     postcss "^8.4.14"
